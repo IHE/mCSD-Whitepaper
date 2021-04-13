@@ -41,7 +41,7 @@ Supplements and the process used to create them can be found at
 * [3 Facility Registry](#3-facility-registry)
 * [4 Health Worker Registry](#4-health-worker-registry)
 * [5 Care Services Registry](#5-care-services-registry)
-* [6 InterLinked Registry](#5-interlinked-registry)
+* [6 InterLinked Registry](#6-interlinked-registry)
 
 # 1 Introduction
 
@@ -211,24 +211,14 @@ data sources are not connected to the maintenance of the facilities. One
 should be able to integrate information from large data collection.
 
 8. Aggregate Data Collection
+    * Problem statement
+        * In this use case, a donor invests in vertical public health programs across many countries. The donor has a multi-country dashboard and analytics platform that aggregates data and tracks progress from the program's outcomes at the facility level.
+        * Thus, there are within-country facility IDs issued by the ministry of health , and IDs for facilities used by the multi-country analytics platform.
+        * IDs may change, administrative hierarchies may split, and facilities may drop or be added over time.
 
-  Problem statement
-  * In this use case, a donor invests in vertical public health programs 
-  across many countries. The donor has a multi-country dashboard and 
-  analytics platform that aggregates data and tracks progress from the 
-  program's outcomes at the facility level.
-  * Thus, there are within-country facility IDs issued by the ministry of 
-  health , and IDs for facilities used by the multi-country analytics 
-  platform.
-  * IDs may change, administrative hierarchies may split, and facilities 
-  may drop or be added over time.
-
-  Solution is record linkage
-  * The need that the facility ID used within-country should be linked 
-  to a multi-country ID, and be updateable.
-  * This is similar to the concept of a client (patient) registry, but 
-  for record linkage between organizations, locations, and healthcare 
-  services in FHIR types.
+    * Solution is record linkage
+        * The need that the facility ID used within-country should be linked to a multi-country ID, and be updateable.
+        * This is similar to the concept of a client (patient) registry, but for record linkage between organizations, locations, and healthcare services in FHIR types.
 
 
 
@@ -326,7 +316,7 @@ For the outpatient or both type the code shall be one of:
 
 * 010.1 OUTPATIENT
 
-· 010.2 OUTPATIENT AND INPATIENT
+* 010.2 OUTPATIENT AND INPATIENT
 
 ### Health service type codes
 
