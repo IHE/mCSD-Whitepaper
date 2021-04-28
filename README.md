@@ -237,7 +237,7 @@ should be able to integrate information from large data collection.
 
 ***Pulled from MHDS-IPS HIE doc, needs to be targeted for this white paper***
 
-This spec expects to leverage a FHIR-capable data store10 as its Interlinked Registry
+This spec expects to leverage a FHIR-capable data store as its Interlinked Registry
 (ILR). The ILR will act as the Facility Registry (ILR-FR) and will be populated by one
  or more underlying facility directories (FD) as defined by the IHE mCSD Profile. As
  was described in the HMIS section, DHIS2 will act as at least one of the FDs to populate the ILR-FR.

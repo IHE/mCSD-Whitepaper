@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CapabilityStatement xmlns="http://hl7.org/fhir">
+  <id value="IHE.mCSD.FacilityRegistry"/>
+  <text>
+    <status value="generated"/><div xmlns="http://www.w3.org/1999/xhtml">
+      <p> The Server supports the following transactions : search-type, history-type</p>
+      <p> The Client supports the following transactions : history-type</p>
+         
+    </div>
+  </text>
+  <url value="http://profiles.ihe.net/ITI/mCSD/CapabilityStatement/IHE.mCSD.FacilityRegistry"/>
+  <version value="0.2.0"/>
+  <name value="IHE mCSD - Facility Registry"/>
+  <title value="IHE ITI Mobile Care Services Discovery (mCSD) - Facility Registry"/>
+  <status value="draft"/>
+  <experimental value="true"/>
+  <date value="2021-04-27"/>
+  <publisher value="IHE International - ITI domain Group"/>
+  <contact>
+    <name value="IHE"/>
+    <telecom>
+      <system value="url"/>
+      <value value="http://ihe.net"/>
+    </telecom>
+  </contact>
+  <description value="CapabilityStatement for a Facility Registry in the IHE IT Infrastructure Technical Framework Supplement IHE mCSD. See http://wiki.ihe.net/index.php/Mobile_Care_Services_Discovery_(mCSD).  The IHE Profile text is Normative, this conformance resource is Informative."/>
+  <jurisdiction>
+    <coding>
+      <system value="http://unstats.un.org/unsd/methods/m49/m49.htm"/>
+      <code value="001"/>
+    </coding>
+  </jurisdiction>
+  <copyright value="IHE http://www.ihe.net/Governance/#Intellectual_Property"/>
+  <kind value="requirements"/>
+  <fhirVersion value="4.0.0"/>
+  <format value="application/fhir+xml"/>
+  <format value="application/fhir+json"/>
+  <rest>
+    <mode value="server"/>
+    <documentation value="Server Endpoints for a Facility Registry"/>
+    <resource>
+      <type value="Location"/>
+      <profile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.Location"/>
+      </profile>
+      <supportedProfile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance"/>
+      </supportedProfile>
+      <documentation value="."/>
+      <interaction>
+        <code value="history-type"/>
+      </interaction>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <!--<searchInclude value=""/> -->
+      <searchParam>
+        <name value="_since"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="name:contains"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="name:exact"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization"/>
+        <type value="reference"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof"/>
+        <type value="reference"/>
+      </searchParam>
+      <searchParam>
+        <name value="type"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="status"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name:contains"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name:exact"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization.active"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization.identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization.name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization.name:contains"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="organization.name:exact"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="near"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="near-distance"/>
+        <type value="quantity"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Organization"/>
+      <profile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.Organization"/>
+      </profile>
+      <supportedProfile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization"/>
+      </supportedProfile>
+      <documentation value="."/>
+      <interaction>
+        <code value="search-type"/>
+      </interaction>
+      <interaction>
+        <code value="history-type"/>
+      </interaction>
+
+      <searchParam>
+        <name value="_since"/>
+        <type value="date"/>
+      </searchParam>
+      <searchParam>
+        <name value="active"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="name:contains"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="name:exact"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof"/>
+        <type value="reference"/>
+      </searchParam>
+      <searchParam>
+        <name value="type"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.identifier"/>
+        <type value="token"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name:contains"/>
+        <type value="string"/>
+      </searchParam>
+      <searchParam>
+        <name value="partof.name:exact"/>
+        <type value="string"/>
+      </searchParam>
+    </resource>
+    <searchParam>
+      <name value="_id"/>
+      <type value="token"/>
+    </searchParam>
+    <searchParam>
+      <name value="_lastUpdated"/>
+      <type value="token"/>
+      <documentation value="The values for this shall support these prefixes: gt, lt, ge, le, sa, and eb"/>
+    </searchParam>
+  </rest>
+    <rest>
+    <mode value="client"/>
+    <documentation value="Client Endpoints for a Facility Registry"/>
+    <resource>
+      <type value="Organization"/>
+      <profile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.Organization"/>
+      </profile>
+      <supportedProfile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization"/>
+      </supportedProfile>
+      <documentation value="."/>
+      <interaction>
+        <code value="history-type"/>
+      </interaction>
+      <!--<searchInclude value=""/> -->
+      <searchParam>
+        <name value="_since"/>
+        <type value="date"/>
+      </searchParam>
+    </resource>
+    <resource>
+      <type value="Location"/>
+      <profile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.Location"/>
+      </profile>
+      <supportedProfile>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation"/>
+        <reference value="http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance"/>
+      </supportedProfile>
+      <documentation value="."/>
+      <interaction>
+        <code value="history-type"/>
+      </interaction>
+      <!--<searchInclude value=""/> -->
+      <searchParam>
+        <name value="_since"/>
+        <type value="date"/>
+      </searchParam>
+    </resource>
+  </rest>
+
+</CapabilityStatement>
