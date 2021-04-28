@@ -41,7 +41,7 @@ Supplements and the process used to create them can be found at
 * [3 Facility Registry](#3-facility-registry)
 * [4 Health Worker Registry](#4-health-worker-registry)
 * [5 Care Services Registry](#5-care-services-registry)
-* [6 InterLinked Registry](#5-interlinked-registry)
+* [6 InterLinked Registry](#6-interlinked-registry)
 
 # 1 Introduction
 
@@ -193,42 +193,33 @@ multiple underlying sources and execute necessary cross-referencing and
 de-duplication workflows to support an interlinked registry relating 
 WHICH workers provide WHAT SERVICES, WHERE.
 
-4. Aggregate Data Collection
-
-Problem statement
-* In this use case, a donor invests in vertical public health programs 
-across many countries. The donor has a multi-country dashboard and 
-analytics platform that aggregates data and tracks progress from the 
-program's outcomes at the facility level.
-* Thus, there are within-country facility IDs issued by the ministry of 
-health , and IDs for facilities used by the multi-country analytics 
-platform.
-* IDs may change, administrative hierarchies may split, and facilities 
-may drop or be added over time.
-
-Solution is record linkage
-* The need that the facility ID used within-country should be linked 
-to a multi-country ID, and be updateable.
-* This is similar to the concept of a client (patient) registry, but 
-for record linkage between organizations, locations, and healthcare 
-services in FHIR types.
-
-5. Monitor functioning facilities, e.g. when buildings are operational, 
+4. Monitor functioning facilities, e.g. when buildings are operational, 
 construction teams, infrastructure, maintenance, then share that 
 information with the public. There is a need to immediately view services,
 openings, closures.
 
-6. View the allocation of human resources (assuming this includes services).
+5. View the allocation of human resources (assuming this includes services).
 
-7. A common problem is that multiple data systems are collecting 
+6. A common problem is that multiple data systems are collecting 
 information about facilities. For example, in one country, there are 
 6 DHIS2 platforms that are not aligned, and are struggling to maintain 
 metadata.
 
-8. A way is needed to integrate some regular, large data collections 
+7. A way is needed to integrate some regular, large data collections 
 (HHFA) from surveys which visit all facilities in the country, and these 
 data sources are not connected to the maintenance of the facilities. One 
 should be able to integrate information from large data collection.
+
+8. Aggregate Data Collection
+    * Problem statement
+        * In this use case, a donor invests in vertical public health programs across many countries. The donor has a multi-country dashboard and analytics platform that aggregates data and tracks progress from the program's outcomes at the facility level.
+        * Thus, there are within-country facility IDs issued by the ministry of health , and IDs for facilities used by the multi-country analytics platform.
+        * IDs may change, administrative hierarchies may split, and facilities may drop or be added over time.
+
+    * Solution is record linkage
+        * The need that the facility ID used within-country should be linked to a multi-country ID, and be updateable.
+        * This is similar to the concept of a client (patient) registry, but for record linkage between organizations, locations, and healthcare services in FHIR types.
+
 
 
 # 3 Facility Registry
@@ -325,9 +316,9 @@ For the outpatient or both type the code shall be one of:
 
 * 010.1 OUTPATIENT
 
-· 010.2 OUTPATIENT AND INPATIENT
+* 010.2 OUTPATIENT AND INPATIENT
 
-Health service type codes
+### Health service type codes
 
 Regarding the code list for health services, the WHO’s Service Availability and Readiness Assessment will be used as the definitive source of service type codes. The health services shall be identified by FHIR HealthcareService resources; the HealthcareService.identifier for each unique service shall be the SARA question number (e.g. 700, FAMILY PLANNING SERVICES). For sub-services, the question and sub-question will be concatenated and separate by a period (e.g. 701.01, Combined estrogen progesterone oral contraceptive pills). For each HealthcareService, the description shall be persisted in the HealthcareService.category element.
 
