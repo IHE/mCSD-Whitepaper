@@ -1,5 +1,11 @@
 # Facility Registry
 
+Table of Contents
+
+* [Use Cases](#use-cases)
+* [Facilities and Jurisdictions](#facilities-and-jurisdictions)
+* [Options](#options)
+
 ## Use Cases
 
 1. A developing country has decided to implement a Master Facility List 
@@ -98,5 +104,138 @@ Organizations of a parent Organization.
 > hierarchy in mCSD. (This requires a mCSD extension to the core FHIR spec.)
 
 ### Hierarchies
+
+Multiple hierarchies are handled with a FHIR extension on the Organization
+resource in mCSD.  The following example shows how to use the extension.
+
+```json
+{
+  "resourceType": "Organization",
+  "id": "mcsd-example-facility",
+  "meta": {
+    "profile": [
+      "https://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization"
+    ]
+  },
+  "type": [
+    {
+      "coding": [
+        {
+          "system": "urn:ietf:rfc:3986",
+          "code": "urn:ihe:iti:mcsd:2019:facility"
+        }
+      ]
+    },
+    {
+      "coding": [
+        {
+          "code": "prov",
+          "system": "http://hl7.org/fhir/R4/codesystem-organization-type.html"
+        }
+      ]
+    }
+  ],
+  "extension": [
+    {
+      "extension": [
+        {
+          "url": "hierarchy-type",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "code": "admin",
+                "system": "http://example.org/types"
+              }
+            ]
+          }
+        },
+        {
+          "url": "part-of",
+          "valueReference": {
+            "reference": "MCSDOrganization/mcsd-example-jurisdiction"
+          }
+        }
+      ],
+      "url": "https://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.OrganizationHierarchy"
+    },
+    {
+      "extension": [
+        {
+          "url": "hierarchy-type",
+          "valueCodeableConcept": {
+            "coding": [
+              {
+                "code": "supply",
+                "system": "http://example.org/types"
+              }
+            ]
+          }
+        },
+        {
+          "url": "part-of",
+          "valueReference": {
+            "reference": "MCSDOrganization/mcsd-example-supplychain"
+          }
+        }
+      ],
+      "url": "https://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.Org
+anizationHierarchy"
+    }
+  ],
+  "name": "Example Facility"
+}
+```
+
+There is a search parameter defined to assist with searching the 
+hierarchies by type and/or by what organizations it is a part of.
+
+```
+GET http://example.org/fhir/Organization?ihe-mcsd-hierarchy-type=supply&ihe-mcsd-hierarchy-partof=Organization/mcsd-example-supplychain
+```
+
+## Options
+
+### Simple Facility Registry
+
+This simple Facility Registry can allow any searches on it's facility 
+data.  It will contain Location and Organization data to reference mCSD
+Facilities and Jursidictions.  The following actors, transactions,
+and profiled resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier (Location Distance option)
+* Transactions
+  * ITI-90
+* Resources
+  * Organization
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization`
+  * Location
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance`
+
+
+### Federated Facility Registry
+
+In a more complicated environment, some aspects of the facilities may
+be managed in multiple systems so they need to be federated using ITI-91.
+The following actors, transactions, and profiled resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier (Location Distance option)
+  * Care Services Update Supplier (Location Distance option)
+  * Care Services Update Consumer (Location Distance option)
+* Transactions
+  * ITI-90
+  * ITI-91
+* Resources
+  * Organization
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization`
+  * Location
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance`
 
 
