@@ -4,6 +4,8 @@
 
 * [Primary Document](mCSD-Whitepaper.md)
 * [Facility Registries](FacilityRegistry.md)
+* [Health Worker Registries](HealthWorkerRegistry.md)
+* [InterLinked Registries](InterLinkedRegistry.md)
 
 ** Open Issues
 

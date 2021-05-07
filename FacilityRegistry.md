@@ -268,7 +268,7 @@ The following actors, transactions, and profiled resources shall be used.
 
 ### Federated Facility Registry with Services
 
-This registry is based on the [Federated Facilty 
+This registry is based on the [Federated Facility 
 Registry](#federated-facility-registry) but include data on healthcare 
 services.  The following actors, transactions, and profiled resources 
 shall be used.
