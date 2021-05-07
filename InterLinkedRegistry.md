@@ -20,7 +20,7 @@ service provision availability (days and times of day).
 
 ## Facilities and Jurisdictions
 
-See the Facility Registry page for [Facilities and Jurisdictions](FacilityRegistry#facilities-and-jurisdictions)
+See the Facility Registry page for [Facilities and Jurisdictions](FacilityRegistry.md#facilities-and-jurisdictions)
 
 ## Options
 
