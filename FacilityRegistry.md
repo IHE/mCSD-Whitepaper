@@ -20,40 +20,46 @@ county). Another would be the supply chain hierarchy where hubs may be
 located separately from administrative regions. Yet another could be a 
 reporting hierarchy used to send data to health system managers, and on 
 up to international organizations.
+  * **Solution Option:** [Simple Facility Registry](#simple-facility-registry)
 
 2. Monitor functioning facilities, e.g. when buildings are operational, 
 construction teams, infrastructure, maintenance, then share that 
 information with the public. There is a need to immediately view services,
 openings, closures.
+  * **Solution Option:** [Simple Facility Registry with Services](#simple-facility-registry-with-services)
 
 3. A common problem is that multiple data systems are collecting 
 information about facilities. For example, in one country, there are 
 6 DHIS2 platforms that are not aligned, and are struggling to maintain 
 metadata.
+  * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
 
 4. A way is needed to integrate some regular, large data collections 
 (HHFA) from surveys which visit all facilities in the country, and these 
 data sources are not connected to the maintenance of the facilities. One 
 should be able to integrate information from large data collection.
+  * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
 
 5. Aggregate Data Collection
-    * Problem statement
-        * In this use case, a donor invests in vertical public health 
-        programs across many countries. The donor has a multi-country 
-        dashboard and analytics platform that aggregates data and tracks 
-        progress from the program's outcomes at the facility level.
-        * Thus, there are within-country facility IDs issued by the 
-        ministry of health, and IDs for facilities used by the 
-        multi-country analytics platform.
-        * IDs may change, administrative hierarchies may split, and 
-        facilities may drop or be added over time.
+  * Problem statement
+    * In this use case, a donor invests in vertical public health 
+    programs across many countries. The donor has a multi-country 
+    dashboard and analytics platform that aggregates data and tracks 
+    progress from the program's outcomes at the facility level.
+    * Thus, there are within-country facility IDs issued by the 
+    ministry of health, and IDs for facilities used by the 
+    multi-country analytics platform.
+    * IDs may change, administrative hierarchies may split, and 
+    facilities may drop or be added over time.
 
-    * Solution is record linkage
-        * The need that the facility ID used within-country should be 
-        linked to a multi-country ID, and be updateable.
-        * This is similar to the concept of a client (patient) registry, 
-        but for record linkage between organizations, locations, and 
-        healthcare services in FHIR types.
+  * Solution is record linkage
+    * The need that the facility ID used within-country should be 
+    linked to a multi-country ID, and be updateable.
+    * This is similar to the concept of a client (patient) registry, 
+    but for record linkage between organizations, locations, and 
+    healthcare services in FHIR types.
+
+  * **Solution Option:** [Federated Facility Registry with Services](#federated-facility-registry-with-services)
 
 ## Facilities and Jurisdictions
 
@@ -197,7 +203,7 @@ GET http://example.org/fhir/Organization?ihe-mcsd-hierarchy-type=supply&ihe-mcsd
 
 ### Simple Facility Registry
 
-This simple Facility Registry can allow any searches on it's facility 
+This simple Facility Registry can allow any searches on its facility 
 data.  It will contain Location and Organization data to reference mCSD
 Facilities and Jursidictions.  The following actors, transactions,
 and profiled resources shall be used.
@@ -237,5 +243,52 @@ The following actors, transactions, and profiled resources shall be used.
     * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation`
     * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation`
     * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance`
+
+### Simple Facility Registry with Services
+
+This simple Facility Registry with Services can allow any searches on 
+its facility data.  It will contain Location, Organization, and 
+HealthcareService data to reference mCSD Facilities and Jursidictions.  
+The following actors, transactions, and profiled resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier (Location Distance option)
+* Transactions
+  * ITI-90
+* Resources
+  * Organization
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization`
+  * Location
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance`
+  * HealthcareService
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.HealthcareService`
+
+### Federated Facility Registry with Services
+
+This registry is based on the [Federated Facilty 
+Registry](#federated-facility-registry) but include data on healthcare 
+services.  The following actors, transactions, and profiled resources 
+shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier (Location Distance option)
+  * Care Services Update Supplier (Location Distance option)
+  * Care Services Update Consumer (Location Distance option)
+* Transactions
+  * ITI-90
+  * ITI-91
+* Resources
+  * Organization
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionOrganization`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityOrganization`
+  * Location
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.JurisdictionLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.FacilityLocation`
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.LocationDistance`
+  * HealthcareService
+    * `http://profiles.ihe.net/ITI/mCSD/StructureDefinition/IHE.mCSD.HealthcareService`
 
 
