@@ -20,46 +20,46 @@ county). Another would be the supply chain hierarchy where hubs may be
 located separately from administrative regions. Yet another could be a 
 reporting hierarchy used to send data to health system managers, and on 
 up to international organizations.
-  * **Solution Option:** [Simple Facility Registry](#simple-facility-registry)
+    * **Solution Option:** [Simple Facility Registry](#simple-facility-registry)
 
 2. Monitor functioning facilities, e.g. when buildings are operational, 
 construction teams, infrastructure, maintenance, then share that 
 information with the public. There is a need to immediately view services,
 openings, closures.
-  * **Solution Option:** [Simple Facility Registry with Services](#simple-facility-registry-with-services)
+    * **Solution Option:** [Simple Facility Registry with Services](#simple-facility-registry-with-services)
 
 3. A common problem is that multiple data systems are collecting 
 information about facilities. For example, in one country, there are 
 6 DHIS2 platforms that are not aligned, and are struggling to maintain 
 metadata.
-  * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
+    * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
 
 4. A way is needed to integrate some regular, large data collections 
 (HHFA) from surveys which visit all facilities in the country, and these 
 data sources are not connected to the maintenance of the facilities. One 
 should be able to integrate information from large data collection.
-  * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
+    * **Solution Option:** [Federated Facility Registry](#federated-facility-registry)
 
 5. Aggregate Data Collection
-  * Problem statement
-    * In this use case, a donor invests in vertical public health 
-    programs across many countries. The donor has a multi-country 
-    dashboard and analytics platform that aggregates data and tracks 
-    progress from the program's outcomes at the facility level.
-    * Thus, there are within-country facility IDs issued by the 
-    ministry of health, and IDs for facilities used by the 
-    multi-country analytics platform.
-    * IDs may change, administrative hierarchies may split, and 
-    facilities may drop or be added over time.
-
-  * Solution is record linkage
-    * The need that the facility ID used within-country should be 
-    linked to a multi-country ID, and be updateable.
-    * This is similar to the concept of a client (patient) registry, 
-    but for record linkage between organizations, locations, and 
-    healthcare services in FHIR types.
-
-  * **Solution Option:** [Federated Facility Registry with Services](#federated-facility-registry-with-services)
+    * Problem statement
+      * In this use case, a donor invests in vertical public health 
+      programs across many countries. The donor has a multi-country 
+      dashboard and analytics platform that aggregates data and tracks 
+      progress from the program's outcomes at the facility level.
+      * Thus, there are within-country facility IDs issued by the 
+      ministry of health, and IDs for facilities used by the 
+      multi-country analytics platform.
+      * IDs may change, administrative hierarchies may split, and 
+      facilities may drop or be added over time.
+  
+    * Solution is record linkage
+      * The need that the facility ID used within-country should be 
+      linked to a multi-country ID, and be updateable.
+      * This is similar to the concept of a client (patient) registry, 
+      but for record linkage between organizations, locations, and 
+      healthcare services in FHIR types.
+  
+    * **Solution Option:** [Federated Facility Registry with Services](#federated-facility-registry-with-services)
 
 ## Facilities and Jurisdictions
 
