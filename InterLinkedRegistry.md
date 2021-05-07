@@ -2,9 +2,20 @@
 
 Table of Contents
 
+* [Introduction](#introduction)
 * [Use Cases](#use-cases)
 * [Facilities and Jurisdictions](#facilities-and-jurisdictions)
 * [Options](#options)
+
+## Introduction
+
+InterLinked Registries include data on facilities as well as
+practitioners and can optionally include healthcare services.
+
+### Open Issues
+1. Does there even need to be a simple version or should we assume
+there will only be federated versions of this?
+
 
 ## Use Cases
 
