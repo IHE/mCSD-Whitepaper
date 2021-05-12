@@ -45,9 +45,23 @@ Supplements and the process used to create them can be found at
 
 # 1 Introduction
 
+The HL7® FHIR® (Fast Healthcare Interoperability Resources) standard defines how healthcare information can be exchanged between different systems. The FHIR standard defines data structures, termed 'resources' -- like Patient, Diagnostic Result, and Care Plan -- and how these resources can be exchanged using common Web protocols. 
+
+A guiding tenant of the evolving FHIR standard is that 80% of interoperability use cases should be satisfied out-of-the-box by any combination of the more than 130 base resources. 
+
+Profiles address diverse use cases, such as domain-specific ones like oncology, specific deployments like a patient identity registry, and local requirements such as incorporating legal definitions of marital status and race into data dictionaries. A simple use case, like a case report, up to a large use case like adapting FHIR to an entire country healthcare system, may be profiled from the base FHIR resources. Aspects of consent, security, and privacy are also embodied in profiles. 
+
+Integrating the Health Enterprise (IHE) supports the open, consensus-driven development of profiles for FHIR resources and other healthcare specifications. The profiling of base resources for use cases are increasingly specified in machine-computable FHIR Implementation Guides (IGs). The terms 'profile' and 'implementation guide' may be used interchangeably, though profiles for FHIR are specified in Implmentation Guides.
+
+This paper outlines the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) which is designed to help implementation of services discovery using registries. A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can then be discoverable. 
+
+For example, an electronic medical records (EMR) system with with ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided. The uses of registries are not limited to patient clinical support; a care services platform can support aggregate and patient-level indicator reporting and case-based surveillance, targeting communities for epidemic control, and underlying requirements for health financing mechanisms. A care services discovery platform enables though is not sufficient for the above use cases. 
+
+This paper further outlines several use cases that can be adapted to many contexts, including creating facilities and health worker registries. This document is not a substitute for the machine-computable IGs, but rather is complementary.
+
 The [Integrating the Healthcare Enterprise (IHE)](http://www.ihe.net) 
 standards profiling organization has developed the 
-[Mobile Care Services Discovery (mCSD) profile](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf)
+
 which can be leveraged for use in various FHIR based registry scenarios, 
 for example, a Facility Registry or a Health Worker Registry.
 
