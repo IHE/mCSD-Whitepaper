@@ -456,7 +456,7 @@ using ITI-90.
 
 **Figure 3.2.5-1: Aggregate Data Collection**
 
-# 5 InterLinked Registry
+# 4 InterLinked Registry
 
 
 InterLinked Registries include data on facilities as well as
