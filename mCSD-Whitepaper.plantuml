@@ -1,0 +1,187 @@
+```plantuml
+@startuml facilities-and-jurisdictions
+node "             mCSD Facility             " {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  forg <-- floc : managingOrganization
+}
+node "             mCSD Jurisdiction             " {
+  artifact jorg as "mCSD Organization"
+  artifact jloc as "mCSD Location"
+  jorg <-- jloc : managingOrganization
+}
+@enduml
+```
+
+```plantuml
+@startuml multiple-hierarchies
+skinparam linetype ortho
+node state as "State (Jurisdiction)"
+together {
+  node countya as "County A (Jurisdiction)"
+  node countyb as "County B (Jurisdiction)"
+}
+node hospital as "Hospital (Facility)" 
+node clinica as "Clinic A (Facility)"
+node clinicb as "Clinic B (Facility)"
+node supplyhub as "State Supply Hub (Jurisdiction)"
+node depot as "Supply Depot (Jurisdiction)"
+node report as "All Reporting (Organization)"
+together {
+  node hospreport as "Hospital Reporting (Organization)"
+  node clinicreport as "Clinic Reporting (Organization)"
+}
+state <-- countya
+state <-- countyb
+countya <-- hospital
+countya <-- clinica
+countyb <-- clinicb
+supplyhub <-- depot
+depot <-- hospital
+depot <-- clinica
+depot <-- clinicb
+report <-- hospreport
+report <-- clinicreport
+hospreport <-- hospital
+clinicreport <-- clinica
+clinicreport <-- clinicb
+@enduml
+```
+
+```plantuml
+@startuml master-facility-list
+skinparam linetype ortho
+
+node registry as "Master Facility List" {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  cloud "mCSD Facility"
+  cloud "mCSD Jurisdiction"
+}
+together {
+  rectangle hmis as "Health Management Information System"
+  rectangle mobile as "Mobile App"
+}
+registry <--> hmis 
+registry <--> mobile 
+
+@enduml
+```
+```plantuml
+@startuml monitor-function-facilities
+skinparam linetype ortho
+
+node registry as "Facility Registry" {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  artifact service as "mCSD HealthcareService"
+  cloud "mCSD Facility"
+  cloud "mCSD Jurisdiction"
+}
+together {
+  rectangle fms as "Facility Management System"
+  rectangle mobile as "Mobile App"
+}
+registry <--> fms 
+registry <--> mobile 
+
+@enduml
+```
+
+
+```plantuml
+@startuml federated-facility-registry
+skinparam linetype ortho
+top to bottom direction
+
+node registry as "Federated Facility Registry" {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  cloud "mCSD Facility"
+  cloud "mCSD Jurisdiction"
+}
+
+together {
+  rectangle dhis2a as "DHIS2 A"
+  rectangle dhis2b as "DHIS2 B"
+  rectangle dhis2c as "DHIS2 C"
+}
+
+rectangle mobile as "Mobile App"
+
+
+registry -[hidden]--> dhis2a
+registry -[hidden]-> mobile
+
+registry <--> dhis2a 
+registry <--> dhis2b 
+registry <--> dhis2c 
+
+registry <--> mobile 
+
+@enduml
+```
+
+
+```plantuml
+@startuml data-collection
+skinparam linetype ortho
+top to bottom direction
+
+node registry as "Federated Facility Registry" {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  cloud "mCSD Facility"
+  cloud "mCSD Jurisdiction"
+}
+
+together {
+  rectangle dataa as "Data Collector A"
+  rectangle datab as "Data Collector B"
+  rectangle datac as "Data Collector C"
+}
+
+rectangle mobile as "Mobile App"
+
+
+registry -[hidden]--> dataa
+registry -[hidden]-> mobile
+
+registry <--> dataa 
+registry <--> datab 
+registry <--> datac 
+
+registry <--> mobile 
+
+@enduml
+```
+
+
+
+```plantuml
+@startuml donor-registry
+skinparam linetype ortho
+top to bottom direction
+
+node registry as "Federated Facility Registry" {
+  artifact forg as "mCSD Organization"
+  artifact floc as "mCSD Location"
+  artifact service as "mCSD HealthcareService"
+  cloud "mCSD Facility"
+  cloud "mCSD Jurisdiction"
+}
+
+node moh as "Ministry of Health Facility Registry"
+
+rectangle app as "Reporting App"
+
+
+registry -[hidden]--> moh
+registry -[hidden]-> app
+
+registry <--> moh 
+registry <--> app 
+
+@enduml
+```
+

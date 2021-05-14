@@ -226,22 +226,6 @@ FHIR resource.
 ![](.//media/facilities-and-jurisdictions.png)
 
 **Figure 3.1-1: Facilities and Jurisdictions**
-<div hidden>
-```plantuml
-@startuml facilities-and-jurisdictions
-node "             mCSD Facility             " {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  forg <-- floc : managingOrganization
-}
-node "             mCSD Jurisdiction             " {
-  artifact jorg as "mCSD Organization"
-  artifact jloc as "mCSD Location"
-  jorg <-- jloc : managingOrganization
-}
-@enduml
-```
-</div>
 
 * **FHIR Locations** are physical places where care can be delivered such 
 as facilities, buildings, wards, rooms, or vehicles. Locations also include
@@ -282,47 +266,11 @@ within Jurisdictions or Organizations.
 Clients to the facility registry can search based on the hierarchy
 type and parent Organizations.
 
-<a name="figure3.1.1-1">
 ![](.//media/multiple-hierarchies.png)
 
+<a name="figure3.1.1-1">
 **Figure 3.1.1-1: Multiple Hierarchies**
 </a>
-<div hidden>
-```plantuml
-@startuml multiple-hierarchies
-skinparam linetype ortho
-node state as "State (Jurisdiction)"
-together {
-  node countya as "County A (Jurisdiction)"
-  node countyb as "County B (Jurisdiction)"
-}
-node hospital as "Hospital (Facility)" 
-node clinica as "Clinic A (Facility)"
-node clinicb as "Clinic B (Facility)"
-node supplyhub as "State Supply Hub (Jurisdiction)"
-node depot as "Supply Depot (Jurisdiction)"
-node report as "All Reporting (Organization)"
-together {
-  node hospreport as "Hospital Reporting (Organization)"
-  node clinicreport as "Clinic Reporting (Organization)"
-}
-state <-- countya
-state <-- countyb
-countya <-- hospital
-countya <-- clinica
-countyb <-- clinicb
-supplyhub <-- depot
-depot <-- hospital
-depot <-- clinica
-depot <-- clinicb
-report <-- hospreport
-report <-- clinicreport
-hospreport <-- hospital
-clinicreport <-- clinica
-clinicreport <-- clinicb
-@enduml
-```
-</div>
 
 ## 3.2 Use Cases
 
@@ -365,27 +313,6 @@ Registry using ITI-90.
 ![](.//media/master-facility-list.png)
 
 **Figure 3.2.1-1: Master Facility List**
-<div hidden>
-```plantuml
-@startuml master-facility-list
-skinparam linetype ortho
-
-node registry as "Master Facility List" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-together {
-  rectangle hmis as "Health Management Information System"
-  rectangle mobile as "Mobile App"
-}
-registry <--> hmis 
-registry <--> mobile 
-
-@enduml
-```
-</div>
 
 ### 3.2.2 Functioning Facilities Registry
 
@@ -419,27 +346,6 @@ Registry using ITI-90.
 **Figure 3.2.2-1: Monitor Functioning Facilities**
 
 <div hidden>
-```plantuml
-@startuml monitor-function-facilities
-skinparam linetype ortho
-
-node registry as "Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  artifact service as "mCSD HealthcareService"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-together {
-  rectangle fms as "Facility Management System"
-  rectangle mobile as "Mobile App"
-}
-registry <--> fms 
-registry <--> mobile 
-
-@enduml
-```
-</div>
 
 
 ### 3.2.3 Federated Facility Registry
@@ -476,40 +382,6 @@ Consumer as needed.
 ![](.//media/federated-facility-registry.png)
 
 **Figure 3.2.3-1: Federated Facility Registry**
-<div hidden>
-```plantuml
-@startuml federated-facility-registry
-skinparam linetype ortho
-top to bottom direction
-
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-
-together {
-  rectangle dhis2a as "DHIS2 A"
-  rectangle dhis2b as "DHIS2 B"
-  rectangle dhis2c as "DHIS2 C"
-}
-
-rectangle mobile as "Mobile App"
-
-
-registry -[hidden]--> dhis2a
-registry -[hidden]-> mobile
-
-registry <--> dhis2a 
-registry <--> dhis2b 
-registry <--> dhis2c 
-
-registry <--> mobile 
-
-@enduml
-```
-</div>
 
 ### 3.2.4 Federated Data Collection
 
@@ -539,41 +411,6 @@ mobile app querying facility data using ITI-90.
 ![](.//media/data-collection.png)
 
 **Figure 3.2.4-1: Federated Data Collection**
-<div hidden>
-```plantuml
-@startuml data-collection
-skinparam linetype ortho
-top to bottom direction
-
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-
-together {
-  rectangle dataa as "Data Collector A"
-  rectangle datab as "Data Collector B"
-  rectangle datac as "Data Collector C"
-}
-
-rectangle mobile as "Mobile App"
-
-
-registry -[hidden]--> dataa
-registry -[hidden]-> mobile
-
-registry <--> dataa 
-registry <--> datab 
-registry <--> datac 
-
-registry <--> mobile 
-
-@enduml
-```
-</div>
-
 
 ### 3.2.5 Aggregate Data Collection
 
@@ -618,35 +455,6 @@ using ITI-90.
 ![](.//media/donor-registry.png)
 
 **Figure 3.2.5-1: Aggregate Data Collection**
-<div hidden>
-```plantuml
-@startuml donor-registry
-skinparam linetype ortho
-top to bottom direction
-
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  artifact service as "mCSD HealthcareService"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-
-node moh as "Ministry of Health Facility Registry"
-
-rectangle app as "Reporting App"
-
-
-registry -[hidden]--> moh
-registry -[hidden]-> app
-
-registry <--> moh 
-registry <--> app 
-
-@enduml
-```
-</div>
-
 
 # 5 InterLinked Registry
 
@@ -654,13 +462,13 @@ registry <--> app
 InterLinked Registries include data on facilities as well as
 practitioners and can optionally include healthcare services.
 
-## 4.1 Facilities and Jurisdictions
+## 5.1 Facilities and Jurisdictions
 
 See the Facility Registry for [Facilities and Jurisdictions](#3.1-facilities-and-jurisdictions)
 
-## 4.2 Use Cases
+## 5.2 Use Cases
 
-### 4.2.1 InterLinked Registry
+### 5.2.1 InterLinked Registry
 
 To support health system planning, resource management, and patient
 referral workflows, it will be important to be able to relate healthcare
