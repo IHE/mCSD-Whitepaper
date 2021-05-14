@@ -37,9 +37,9 @@ Supplements and the process used to create them can be found at
 
 **CONTENTS**
 * [1 Introduction](#1-introduction)
-* [2 Health Worker Registry](#4-health-worker-registry)
+* [2 Health Worker Registry](#2-health-worker-registry)
 * [3 Facility Registry](#3-facility-registry)
-* [4 InterLinked Registry](#6-interlinked-registry)
+* [4 InterLinked Registry](#4-interlinked-registry)
 
 # 1 Introduction
 
@@ -322,7 +322,7 @@ information with the public. There is a need to immediately view services,
 openings, closures.
 
 This registry is similar to the [Master Facility 
-List](#3.2.1-master-facility-list) but it also includes healthcare service 
+List](#321-master-facility-list) but it also includes healthcare service 
 data.
 
 The following actors, transactions, and resources shall be used.
@@ -464,7 +464,7 @@ practitioners and can optionally include healthcare services.
 
 ## 4.1 Facilities and Jurisdictions
 
-See the Facility Registry for [Facilities and Jurisdictions](#3.1-facilities-and-jurisdictions)
+See the Facility Registry for [Facilities and Jurisdictions](#31-facilities-and-jurisdictions)
 
 ## 4.2 Use Cases
 
