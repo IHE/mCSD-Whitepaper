@@ -276,25 +276,7 @@ FHIR resource.
 > single FHIR resource, instead it is represented in FHIR as a Location and 
 > Organization resource pair. 
 
-![](.//media/facilities-and-jurisdictions.png)
 
-**Figure 3.1-1: Facilities and Jurisdictions**
-<!--
-```plantuml
-@startuml facilities-and-jurisdictions
-node "             mCSD Facility             " {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  forg <-- floc : managingOrganization
-}
-node "             mCSD Jurisdiction             " {
-  artifact jorg as "mCSD Organization"
-  artifact jloc as "mCSD Location"
-  jorg <-- jloc : managingOrganization
-}
-@enduml
-```
--->
 
 * **FHIR Locations** are physical places where care can be delivered such 
 as facilities, buildings, wards, rooms, or vehicles. Locations also include
@@ -335,24 +317,6 @@ within Jurisdictions or Organizations.
 Clients to the facility registry can search based on the hierarchy
 type and parent Organizations.
 
-![](.//media/multiple-hierarchies.png)
-
-**Figure 3.1.1-1: Multiple Hierarchies**
-<!--
-```plantuml
-@startuml multiple-hierarchies
-node state as "State (Jurisdiction)"
-node county as "County (Jurisdiction)"
-node hospital as "Hospital (Facility)" 
-node supply as "Supply Hub (Jurisdiction)"
-node report as "Reports (Organization)"
-state <-- county
-county <-- hospital
-supply <-- hospital
-report <-- hospital
-@enduml
-```
--->
 
 ## 3.2 Options
 
@@ -378,30 +342,7 @@ option) to search the Facility Registry content.  Figure 3.1.1-1 shows a
 Health Management Information System and a Mobile App querying the Facility
 Registry using ITI-90.
 
-![](.//media/simple-facility-registry.png)
 
-**Figure 3.1.1-1: Multiple Hierarchies**
-<!--
-```plantuml
-@startuml simple-facility-registry
-skinparam linetype ortho
-
-node registry as "Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-together {
-  rectangle hmis as "Health Management Information System"
-  rectangle mobile as "Mobile App"
-}
-registry <--> hmis 
-registry <--> mobile 
-
-@enduml
-```
--->
 
 ### 3.2.2 Federated Facility Registry
 
