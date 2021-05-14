@@ -37,9 +37,10 @@ Supplements and the process used to create them can be found at
 
 **CONTENTS**
 * [1 Introduction](#1-introduction)
-* [2 Health Worker Registry](#2-health-worker-registry)
+* [2 Key Use Cases](#2-key-use-cases)
 * [3 Facility Registry](#3-facility-registry)
-* [4 InterLinked Registry](#4-interlinked-registry)
+* [4 Health Worker Registry](#4-health-worker-registry)
+* [5 Care Services Registry](#5-care-services-registry)
 
 # 1 Introduction
 
@@ -160,11 +161,42 @@ or primary care services. The combination of a Healthcare Service offered
 at a Location may have specific attributes including contact person, hours
 of operation, etc.
 
-# 2 Health Worker Registry
 
-## 2.1 Use Cases
+# 2 Key Use Cases
 
-### 2.1.1 Health Worker Registry
+The existing use cases all give good examples of specific implementations, such as:
+
+## 2.1 Master Facility List
+
+A developing country has decided to implement a Master Facility List
+(MFL) based on recommendations from the WHO in the [MFL Resource
+Package](https://www.who.int/healthinfo/country_monitoring_evaluation/mfl/en/).
+This resource includes a minimum data set to uniquely identify, location,
+and contact a specific facility. Since this will be a single source of
+information for the country, there may be differing hierarchies that
+need to be supported for the facilities. For example, one hierarchy would
+be the administrative hierarchy for the country (region, district,
+county). Another would be the supply chain hierarchy where hubs may be
+located separately from administrative regions. Yet another could be a
+reporting hierarchy used to send data to health system managers, and on
+up to international organizations.
+
+> **Solution Option:** [Simple Facility Registry](#321-simple-facility-registry)
+
+## 2.2 Care Services Registry
+
+To support health system planning, resource management, and patient
+referral workflows, it will be important to be able to relate healthcare
+facilities with the health services that are provided there. An
+interlinked registry may be operationalized that leverages mCSD to
+cross-reference a code list of health services with the unique list of
+facility IDs. Such a cross reference may include information related to
+service provision availability (days and times of day).
+
+> **Solution Option:** [Federated InterLinked Registry with Services](#521-federated-care-services-registry-with-services)
+
+
+## 2.3 Health Worker Registry
 
 A Health Worker Registry could be operationalized by collecting and
 collating underlying provider demographic content from multiple clinical
@@ -178,22 +210,61 @@ multiple underlying sources and execute necessary cross-referencing and
 de-duplication workflows to support an interlinked registry relating
 WHICH workers provide WHAT SERVICES, WHERE.
 
-This registry can access a Facility Registry to link practitioners
-to where they work.
+> **Solution Option:** [Federated Health Worker Registry](#412-federated-health-worker-registry)
 
-The following actors, transactions, and resources shall be used.
+## 2.4 Functioning Facilities Registry
 
-* Actors (Options)
-  * Care Services Selective Supplier 
-  * Care Services Update Supplier 
-  * Care Services Update Consumer 
-* Transactions
-  * ITI-90
-  * ITI-91
-* Resources
-  * Practitioner
-  * PractitionerRole
-  * HealthcareService
+Monitor functioning facilities, e.g. when buildings are operational,
+construction teams, infrastructure, maintenance, then share that
+information with the public. There is a need to immediately view services,
+openings, closures.
+
+> **Solution Option:** [Simple Facility Registry with Services](#323-simple-facility-registry-with-services)
+
+
+5. View the allocation of human resources (assuming this includes services).
+    * **Solution Option:** [Federated Health Worker Registry with Services](#413-federated-health-worker-registry-with-services)
+
+## 2.6 Federated Facility Registry
+
+A common problem is that multiple data systems are collecting
+information about facilities. For example, in one country, there are
+6 DHIS2 platforms that are not aligned, and are struggling to maintain
+metadata.
+
+> **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
+
+
+## 2.7 Federated Data Collection
+
+A way is needed to integrate some regular, large data collections
+(HHFA) from surveys which visit all facilities in the country, and these
+data sources are not connected to the maintenance of the facilities. One
+should be able to integrate information from large data collection.
+
+> **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
+
+## 2.8 Aggregate Data Collection
+
+* Problem statement
+  * In this use case, a donor invests in vertical public health
+  programs across many countries. The donor has a multi-country
+  dashboard and analytics platform that aggregates data and tracks
+  progress from the program's outcomes at the facility level.
+  * Thus, there are within-country facility IDs issued by the
+  ministry of health, and IDs for facilities used by the
+  multi-country analytics platform.
+  * IDs may change, administrative hierarchies may split, and
+  facilities may drop or be added over time.
+
+* Solution is record linkage
+  * The need that the facility ID used within-country should be
+  linked to a multi-country ID, and be updateable.
+  * This is similar to the concept of a client (patient) registry,
+  but for record linkage between organizations, locations, and
+  healthcare services in FHIR types.
+
+> **Solution Option:** [Federated Facility Registry with Services](#324-federated-facility-registry-with-services)
 
 
 # 3 Facility Registry
@@ -272,24 +343,11 @@ type and parent Organizations.
 
 **Figure 3.1.1-1: Multiple Hierarchies**
 
-## 3.2 Use Cases
+## 3.2 Implementations Cases
 
-### 3.2.1 Master Facility List
+### 3.2.1 Simple Facility Registry
 
-A developing country has decided to implement a Master Facility List
-(MFL) based on recommendations from the WHO in the [MFL Resource
-Package](https://www.who.int/healthinfo/country_monitoring_evaluation/mfl/en/). 
-This resource includes a minimum data set to uniquely identify, locate,
-and contact a specific facility. Since this will be a single source of
-information for the country, there may be differing hierarchies that
-need to be supported for the facilities. For example, one hierarchy would
-be the administrative hierarchy for the country (region, district,
-county). Another would be the supply chain hierarchy where hubs may be
-located separately from administrative regions. Yet another could be a
-reporting hierarchy used to send data to health system managers, and on
-up to international organizations.  See [Figure 3.1.1-1: Multiple Hierarchies](#figure3.1.1-1).
-
-The Master Facility List will allow any searches on its facility 
+A Simple Facility Registry will allow any searches on its facility 
 data.  It will contain Location and Organization data to reference mCSD
 Facilities and Jursidictions as well as any other non-jurisdicational
 Organizations.  It will also include geographic data so searches can also
@@ -310,53 +368,16 @@ option) to search the Facility Registry content.  Figure 3.2.1-1 shows a
 Health Management Information System and a Mobile App querying the Facility
 Registry using ITI-90.
 
-![](.//media/master-facility-list.png)
+![](.//media/simple-facility-registry.png)
 
-**Figure 3.2.1-1: Master Facility List**
+**Figure 3.2.1-1: Simple Facility Registry**
 
-### 3.2.2 Functioning Facilities Registry
+### 3.2.2 Federated Facility Registry
 
-Monitor functioning facilities, e.g. when buildings are operational,
-construction teams, infrastructure, maintenance, then share that
-information with the public. There is a need to immediately view services,
-openings, closures.
-
-This registry is similar to the [Master Facility 
-List](#321-master-facility-list) but it also includes healthcare service 
-data.
-
-The following actors, transactions, and resources shall be used.
-
-* Actors (Options)
-  * Care Services Selective Supplier (Location Distance option)
-* Transactions
-  * ITI-90
-* Resources
-  * Organization
-  * Location
-  * HealthcareService
-
-Clients will act as a Care Services Selective Consumer (Location Distance
-option) to search the Facility Registry content.  Figure 3.2.2-1 shows a
-Facility Management System and a Mobile App querying the Facility
-Registry using ITI-90.
-
-![](.//media/monitor-function-facilities.png)
-
-**Figure 3.2.2-1: Monitor Functioning Facilities**
-
-<div hidden>
-
-
-### 3.2.3 Federated Facility Registry
-
-A common problem is that multiple data systems are collecting
-information about facilities. For example, in one country, there are
-6 DHIS2 platforms that are not aligned, and are struggling to maintain
-metadata.
-
-In a more complicated environment like this, some aspects of the facilities 
-are managed in multiple systems so they need to be federated using ITI-91.
+In a distributed environment, some aspects of the facilities are managed 
+in multiple systems so they need to be federated using ITI-91.  Some
+systems may also need to pull full updates from the registry instead
+of searching.
 
 The following actors, transactions, and resources shall be used.
 
@@ -371,66 +392,46 @@ The following actors, transactions, and resources shall be used.
   * Organization
   * Location
 
-DHIS2 clients will act as a Care Services Selective Suppliers (Location 
+Other sources will act as a Care Services Selective Suppliers (Location 
 Distance option) to update the Facility Registry content.  Figure 3.2.3-1 
-shows a federated system of DHIS2 servers sending their content to a 
+shows a federated system of servers sending their content to a 
 Federated Facility Registry using ITI-91 and a mobile app querying 
-facility data using ITI-90.  Each DHIS2 server can also pull the full 
+facility data using ITI-90.  Each server can also pull the full 
 combined data set from the Facility Registry as a Care Services Update 
 Consumer as needed.
 
 ![](.//media/federated-facility-registry.png)
 
-**Figure 3.2.3-1: Federated Facility Registry**
+**Figure 3.2.2-1: Federated Facility Registry**
 
-### 3.2.4 Federated Data Collection
+### 3.2.3 Simple Facility Registry with Services
 
-A way is needed to integrate some regular, large data collections
-(HHFA) from surveys which visit all facilities in the country, and these
-data sources are not connected to the maintenance of the facilities. One
-should be able to integrate information from large data collection.
+This registry is similar to the [Simple Facility 
+Registry](#321-simple-facility-registry) but it also includes healthcare 
+service data.
 
 The following actors, transactions, and resources shall be used.
 
 * Actors (Options)
   * Care Services Selective Supplier (Location Distance option)
-  * Care Services Update Consumer (Location Distance option)
 * Transactions
   * ITI-90
-  * ITI-91
 * Resources
   * Organization
   * Location
+  * HealthcareService
 
-Data collection clients will act as a Care Services Selective Suppliers 
-(Location Distance option) to update the Facility Registry content.  
-Figure 3.2.4-1 shows a federated system of data collection applications 
-sending their content to a Federated Facility Registry using ITI-91 and a 
-mobile app querying facility data using ITI-90.  
+Clients will act as a Care Services Selective Consumer (Location Distance
+option) to search the Facility Registry content.  Figure 3.2.3-1 shows a
+Facility Management System and a Mobile App querying the Facility
+Registry using ITI-90.
 
-![](.//media/data-collection.png)
+![](.//media/simple-facility-services.png)
 
-**Figure 3.2.4-1: Federated Data Collection**
+**Figure 3.2.3-1: Simple Facility Registry with Services**
 
-### 3.2.5 Aggregate Data Collection
 
-* Problem statement
-  * In this use case, a donor invests in vertical public health
-  programs across many countries. The donor has a multi-country
-  dashboard and analytics platform that aggregates data and tracks
-  progress from the program's outcomes at the facility level.
-  * Thus, there are within-country facility IDs issued by the
-  ministry of health, and IDs for facilities used by the
-  multi-country analytics platform.
-  * IDs may change, administrative hierarchies may split, and
-  facilities may drop or be added over time.
-
-* Solution is record linkage
-  * The need that the facility ID used within-country should be
-  linked to a multi-country ID, and be updateable.
-  * This is similar to the concept of a client (patient) registry,
-  but for record linkage between organizations, locations, and
-  healthcare services in FHIR types.
+### 3.2.4 Federated Facility Registry with Services
 
 
 The following actors, transactions, and resources shall be used.
@@ -438,6 +439,7 @@ The following actors, transactions, and resources shall be used.
 * Actors (Options)
   * Care Services Selective Supplier (Location Distance option)
   * Care Services Update Consumer (Location Distance option)
+  * Care Services Update Supplier (Location Distance option)
 * Transactions
   * ITI-90
   * ITI-91
@@ -446,29 +448,66 @@ The following actors, transactions, and resources shall be used.
   * Location
   * HealthcareService
 
-The donor facility registry needs to pull updates from a Ministry of
-Health facility registry using ITI-91 as a Care Services Update Consumer.  
-Records can be reconciled as needed using other tools.  A reporting 
-application can use the reconciled data on the donor facility registry 
-using ITI-90.
+Other sources will act as a Care Services Selective Suppliers 
+(Location Distance option) to update the Facility Registry content.  
+Figure 3.2.4-1 shows a federated system of facility sources sending 
+their content to a Federated Facility Registry using ITI-91 and a 
+mobile app querying facility data using ITI-90.  
 
-![](.//media/donor-registry.png)
+![](.//media/federated-facility-services.png)
 
-**Figure 3.2.5-1: Aggregate Data Collection**
+**Figure 3.2.4-1: Federated Facility Registry with Services**
 
-# 4 InterLinked Registry
+# 4 Health Worker Registry
+
+## 4.1 Use Cases
+
+### 4.1.1 Health Worker Registry
+
+A Health Worker Registry could be operationalized by collecting and
+collating underlying provider demographic content from multiple clinical
+colleges (e.g. College of Physicians and Surgeons, College of Nurses,
+College of Pharmacists, etc.). These Colleges exert governance over their
+membership, which may include a requirement of licensure in the
+self-governing body in order to legally practice in a jurisdiction. As
+such, the underlying Colleges will maintain the content and a Health
+Worker Registry would periodically refresh its content from these
+multiple underlying sources and execute necessary cross-referencing and
+de-duplication workflows to support an interlinked registry relating
+WHICH workers provide WHAT SERVICES, WHERE.
+
+This registry can access a Facility Registry to link practitioners
+to where they work.
+
+The following actors, transactions, and resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier 
+  * Care Services Update Supplier 
+  * Care Services Update Consumer 
+* Transactions
+  * ITI-90
+  * ITI-91
+* Resources
+  * Practitioner
+  * PractitionerRole
+  * HealthcareService
 
 
-InterLinked Registries include data on facilities as well as
+
+# 5 Care Services Registry
+
+
+Care Services Registries include data on facilities as well as
 practitioners and can optionally include healthcare services.
 
-## 4.1 Facilities and Jurisdictions
+## 5.1 Facilities and Jurisdictions
 
 See the Facility Registry for [Facilities and Jurisdictions](#31-facilities-and-jurisdictions)
 
-## 4.2 Use Cases
+## 5.2 Use Cases
 
-### 4.2.1 InterLinked Registry
+### 5.2.1 Care Services Registry
 
 To support health system planning, resource management, and patient
 referral workflows, it will be important to be able to relate healthcare

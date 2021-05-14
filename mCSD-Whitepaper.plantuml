@@ -1,35 +1,37 @@
 ```plantuml
 @startuml facilities-and-jurisdictions
-node "             mCSD Facility             " {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  forg <-- floc : managingOrganization
+skinparam componentStyle uml2
+frame "mCSD Facility" {
+  component forg as "mCSD Organization"
+  component floc as "mCSD Location"
+  forg -[hidden]-> floc 
 }
-node "             mCSD Jurisdiction             " {
-  artifact jorg as "mCSD Organization"
-  artifact jloc as "mCSD Location"
-  jorg <-- jloc : managingOrganization
+frame "mCSD Jurisdiction" {
+  component jorg as "mCSD Organization"
+  component jloc as "mCSD Location"
+  jorg -[hidden]-> jloc 
 }
 @enduml
 ```
 
 ```plantuml
 @startuml multiple-hierarchies
+skinparam componentStyle uml2
 skinparam linetype ortho
-node state as "State (Jurisdiction)"
+frame state as "State (Jurisdiction)"
 together {
-  node countya as "County A (Jurisdiction)"
-  node countyb as "County B (Jurisdiction)"
+  frame countya as "County A (Jurisdiction)"
+  frame countyb as "County B (Jurisdiction)"
 }
-node hospital as "Hospital (Facility)" 
-node clinica as "Clinic A (Facility)"
-node clinicb as "Clinic B (Facility)"
-node supplyhub as "State Supply Hub (Jurisdiction)"
-node depot as "Supply Depot (Jurisdiction)"
-node report as "All Reporting (Organization)"
+frame hospital as "Hospital (Facility)" 
+frame clinica as "Clinic A (Facility)"
+frame clinicb as "Clinic B (Facility)"
+frame supplyhub as "State Supply Hub (Jurisdiction)"
+frame depot as "Supply Depot (Jurisdiction)"
+component report as "All Reporting (Organization)"
 together {
-  node hospreport as "Hospital Reporting (Organization)"
-  node clinicreport as "Clinic Reporting (Organization)"
+  component hospreport as "Hospital Reporting (Organization)"
+  component clinicreport as "Clinic Reporting (Organization)"
 }
 state <-- countya
 state <-- countyb
@@ -49,18 +51,19 @@ clinicreport <-- clinicb
 ```
 
 ```plantuml
-@startuml master-facility-list
+@startuml simple-facility-registry
+skinparam componentStyle uml2
 skinparam linetype ortho
 
-node registry as "Master Facility List" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
+node registry as "Facility Registry" {
+  component forg as "mCSD Organization"
+  component floc as "mCSD Location"
+  frame "mCSD Facility"
+  frame "mCSD Jurisdiction"
 }
 together {
-  rectangle hmis as "Health Management Information System"
-  rectangle mobile as "Mobile App"
+  node hmis as "Health Management Information System"
+  node mobile as "Mobile App"
 }
 registry <--> hmis 
 registry <--> mobile 
@@ -68,19 +71,20 @@ registry <--> mobile
 @enduml
 ```
 ```plantuml
-@startuml monitor-function-facilities
+@startuml simple-facility-services
+skinparam componentStyle uml2
 skinparam linetype ortho
 
 node registry as "Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  artifact service as "mCSD HealthcareService"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
+  component forg as "mCSD Organization"
+  component floc as "mCSD Location"
+  component service as "mCSD HealthcareService"
+  frame "mCSD Facility"
+  frame "mCSD Jurisdiction"
 }
 together {
-  rectangle fms as "Facility Management System"
-  rectangle mobile as "Mobile App"
+  node fms as "Facility Management System"
+  node mobile as "Mobile App"
 }
 registry <--> fms 
 registry <--> mobile 
@@ -91,31 +95,32 @@ registry <--> mobile
 
 ```plantuml
 @startuml federated-facility-registry
+skinparam componentStyle uml2
 skinparam linetype ortho
 top to bottom direction
 
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
+node registry as "Central Facility Registry" {
+  component forg as "mCSD Organization"
+  component floc as "mCSD Location"
+  frame "mCSD Facility"
+  frame "mCSD Jurisdiction"
 }
 
 together {
-  rectangle dhis2a as "DHIS2 A"
-  rectangle dhis2b as "DHIS2 B"
-  rectangle dhis2c as "DHIS2 C"
+  node sourcea as "Facility Source A"
+  node sourceb as "Facility Source B"
+  node sourcec as "Facility Source C"
 }
 
-rectangle mobile as "Mobile App"
+node mobile as "Mobile App"
 
 
-registry -[hidden]--> dhis2a
+registry -[hidden]--> sourcea
 registry -[hidden]-> mobile
 
-registry <--> dhis2a 
-registry <--> dhis2b 
-registry <--> dhis2c 
+registry <--> sourcea 
+registry <--> sourceb 
+registry <--> sourcec 
 
 registry <--> mobile 
 
@@ -124,62 +129,31 @@ registry <--> mobile
 
 
 ```plantuml
-@startuml data-collection
+@startuml federated-facility-services
+skinparam componentStyle uml2
 skinparam linetype ortho
 top to bottom direction
 
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
+node registry as "Central Facility Registry" {
+  component forg as "mCSD Organization"
+  component floc as "mCSD Location"
+  component service as "mCSD HealthcareService"
+  frame "mCSD Facility"
+  frame "mCSD Jurisdiction"
 }
 
-together {
-  rectangle dataa as "Data Collector A"
-  rectangle datab as "Data Collector B"
-  rectangle datac as "Data Collector C"
-}
+node source as "Facility Source"
 
-rectangle mobile as "Mobile App"
+node hwr as "Health Worker Registry"
+
+node app as "Reporting App"
 
 
-registry -[hidden]--> dataa
-registry -[hidden]-> mobile
-
-registry <--> dataa 
-registry <--> datab 
-registry <--> datac 
-
-registry <--> mobile 
-
-@enduml
-```
-
-
-
-```plantuml
-@startuml donor-registry
-skinparam linetype ortho
-top to bottom direction
-
-node registry as "Federated Facility Registry" {
-  artifact forg as "mCSD Organization"
-  artifact floc as "mCSD Location"
-  artifact service as "mCSD HealthcareService"
-  cloud "mCSD Facility"
-  cloud "mCSD Jurisdiction"
-}
-
-node moh as "Ministry of Health Facility Registry"
-
-rectangle app as "Reporting App"
-
-
-registry -[hidden]--> moh
+registry -[hidden]--> source
 registry -[hidden]-> app
 
 registry <--> moh 
+registry --> hwr 
 registry <--> app 
 
 @enduml
