@@ -266,11 +266,11 @@ within Jurisdictions or Organizations.
 Clients to the facility registry can search based on the hierarchy
 type and parent Organizations.
 
+<a name="figure3.1.1-1">&nbsp;</a>
+
 ![](.//media/multiple-hierarchies.png)
 
-<a name="figure3.1.1-1">
 **Figure 3.1.1-1: Multiple Hierarchies**
-</a>
 
 ## 3.2 Use Cases
 
