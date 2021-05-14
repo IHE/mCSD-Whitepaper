@@ -222,8 +222,11 @@ openings, closures.
 > **Solution Option:** [Simple Facility Registry with Services](#323-simple-facility-registry-with-services)
 
 
-5. View the allocation of human resources (assuming this includes services).
-    * **Solution Option:** [Federated Health Worker Registry with Services](#413-federated-health-worker-registry-with-services)
+## 2.5 Health Worker Registry with Services
+
+View the allocation of human resources (assuming this includes services).
+
+> **Solution Option:** [Federated Health Worker Registry with Services](#413-federated-health-worker-registry-with-services)
 
 ## 2.6 Federated Facility Registry
 
