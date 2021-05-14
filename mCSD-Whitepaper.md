@@ -226,7 +226,7 @@ FHIR resource.
 ![](.//media/facilities-and-jurisdictions.png)
 
 **Figure 3.1-1: Facilities and Jurisdictions**
-<!--
+<div hidden>
 ```plantuml
 @startuml facilities-and-jurisdictions
 node "             mCSD Facility             " {
@@ -241,7 +241,7 @@ node "             mCSD Jurisdiction             " {
 }
 @enduml
 ```
--->
+</div>
 
 * **FHIR Locations** are physical places where care can be delivered such 
 as facilities, buildings, wards, rooms, or vehicles. Locations also include
@@ -287,7 +287,7 @@ type and parent Organizations.
 
 **Figure 3.1.1-1: Multiple Hierarchies**
 </a>
-<!--
+<div hidden>
 ```plantuml
 @startuml multiple-hierarchies
 skinparam linetype ortho
@@ -322,7 +322,7 @@ clinicreport <-- clinica
 clinicreport <-- clinicb
 @enduml
 ```
--->
+</div>
 
 ## 3.2 Use Cases
 
@@ -365,7 +365,7 @@ Registry using ITI-90.
 ![](.//media/master-facility-list.png)
 
 **Figure 3.2.1-1: Master Facility List**
-<!--
+<div hidden>
 ```plantuml
 @startuml master-facility-list
 skinparam linetype ortho
@@ -385,7 +385,7 @@ registry <--> mobile
 
 @enduml
 ```
--->
+</div>
 
 ### 3.2.2 Functioning Facilities Registry
 
@@ -417,7 +417,8 @@ Registry using ITI-90.
 ![](.//media/monitor-function-facilities.png)
 
 **Figure 3.2.2-1: Monitor Functioning Facilities**
-<!--
+
+<div hidden>
 ```plantuml
 @startuml monitor-function-facilities
 skinparam linetype ortho
@@ -438,7 +439,7 @@ registry <--> mobile
 
 @enduml
 ```
--->
+</div>
 
 
 ### 3.2.3 Federated Facility Registry
@@ -475,7 +476,7 @@ Consumer as needed.
 ![](.//media/federated-facility-registry.png)
 
 **Figure 3.2.3-1: Federated Facility Registry**
-<!--
+<div hidden>
 ```plantuml
 @startuml federated-facility-registry
 skinparam linetype ortho
@@ -508,7 +509,7 @@ registry <--> mobile
 
 @enduml
 ```
--->
+</div>
 
 ### 3.2.4 Federated Data Collection
 
@@ -538,7 +539,7 @@ mobile app querying facility data using ITI-90.
 ![](.//media/data-collection.png)
 
 **Figure 3.2.4-1: Federated Data Collection**
-<!--
+<div hidden>
 ```plantuml
 @startuml data-collection
 skinparam linetype ortho
@@ -571,7 +572,7 @@ registry <--> mobile
 
 @enduml
 ```
--->
+</div>
 
 
 ### 3.2.5 Aggregate Data Collection
@@ -617,7 +618,7 @@ using ITI-90.
 ![](.//media/donor-registry.png)
 
 **Figure 3.2.5-1: Aggregate Data Collection**
-<!--
+<div hidden>
 ```plantuml
 @startuml donor-registry
 skinparam linetype ortho
@@ -644,7 +645,7 @@ registry <--> app
 
 @enduml
 ```
--->
+</div>
 
 
 # 5 InterLinked Registry
