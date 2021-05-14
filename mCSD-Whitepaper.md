@@ -462,13 +462,13 @@ using ITI-90.
 InterLinked Registries include data on facilities as well as
 practitioners and can optionally include healthcare services.
 
-## 5.1 Facilities and Jurisdictions
+## 4.1 Facilities and Jurisdictions
 
 See the Facility Registry for [Facilities and Jurisdictions](#3.1-facilities-and-jurisdictions)
 
-## 5.2 Use Cases
+## 4.2 Use Cases
 
-### 5.2.1 InterLinked Registry
+### 4.2.1 InterLinked Registry
 
 To support health system planning, resource management, and patient
 referral workflows, it will be important to be able to relate healthcare
