@@ -65,11 +65,36 @@ together {
   node hmis as "Health Management Information System"
   node mobile as "Mobile App"
 }
-registry <--> hmis 
-registry <--> mobile 
+registry -[hidden]-> hmis
+registry <-- hmis 
+registry <-- mobile 
 
 @enduml
 ```
+
+```plantuml
+@startuml simple-facility-registry-sequence
+skinparam componentStyle uml2
+
+participant "Facility Registry" as registry
+participant "Health Management Information System" as hmis
+participant "Mobile App" as mobile
+
+group HMIS querying registry
+hmis -> registry: <b>[ITI-90]</b> Find Matching Care Services Request
+registry -> hmis: <b>[ITI-90]</b> Find Matching Care Services Response
+end
+group Mobile App querying registry
+mobile -> registry: <b>[ITI-90]</b> Find Matching Care Services Request
+registry -> mobile: <b>[ITI-90]</b> Find Matching Care Services Response
+end
+
+@enduml
+```
+
+
+
+
 ```plantuml
 @startuml simple-facility-services
 skinparam componentStyle uml2
@@ -97,7 +122,6 @@ registry <--> mobile
 @startuml federated-facility-registry
 skinparam componentStyle uml2
 skinparam linetype ortho
-top to bottom direction
 
 node registry as "Central Facility Registry" {
   component forg as "mCSD Organization"
@@ -126,6 +150,41 @@ registry <--> mobile
 
 @enduml
 ```
+```plantuml
+@startuml federated-facility-registry-sequence
+skinparam componentStyle uml2
+skinparam linetype ortho
+
+participant "Central Facility Registry" as registry
+
+participant "Facility Source A" as sourcea 
+participant "Facility Source B" as sourceb 
+participant "Facility Source C" as sourcec 
+
+participant "Mobile App" as mobile 
+
+group Registry Pulls Updates From Sources
+registry -> sourcea: <b>[ITI-91]</b> Request Care Services Updates Request
+sourcea -> registry: <b>[ITI-91]</b> Request Care Services Updates Response
+registry -> sourceb: <b>[ITI-91]</b> Request Care Services Updates Request
+sourceb -> registry: <b>[ITI-91]</b> Request Care Services Updates Response
+registry -> sourcec: <b>[ITI-91]</b> Request Care Services Updates Request
+sourcec -> registry: <b>[ITI-91]</b> Request Care Services Updates Response
+end
+
+group Source A Pulls Update from Registry
+sourcea -> registry: <b>[ITI-91]</b> Request Care Services Updates Request
+registry -> sourcea: <b>[ITI-91]</b> Request Care Services Updates Response
+end
+
+group Mobile App querying registry
+mobile -> registry: <b>[ITI-90]</b> Find Matching Care Services Request
+registry -> mobile: <b>[ITI-90]</b> Find Matching Care Services Response
+end
+
+@enduml
+```
+
 
 
 ```plantuml

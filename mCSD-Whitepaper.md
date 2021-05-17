@@ -335,7 +335,7 @@ Organizations of a parent Organization.
 Multiple hierarchies are handled with a FHIR extension on the Organization
 resource in mCSD.  Each Organization can be part of any number of parent 
 Organizations associated with a type for the hierarchy.  A hierarchy can 
-within Jurisdictions or Organizations.
+be within Jurisdictions and/or Organizations.
 
 Clients to the facility registry can search based on the hierarchy
 type and parent Organizations.
@@ -346,7 +346,7 @@ type and parent Organizations.
 
 **Figure 3.1.1-1: Multiple Hierarchies**
 
-## 3.2 Implementations Cases
+## 3.2 Implementations 
 
 ### 3.2.1 Simple Facility Registry
 
@@ -363,17 +363,24 @@ The following actors, transactions, and resources shall be used.
 * Transactions
   * ITI-90
 * Resources
-  * Organization
-  * Location
+  * `Organization`
+  * `Location`
 
 Clients will act as a Care Services Selective Consumer (Location Distance
 option) to search the Facility Registry content.  Figure 3.2.1-1 shows a
-Health Management Information System and a Mobile App querying the Facility
-Registry using ITI-90.
+Health Management Information System (HMIS) and a Mobile App querying the 
+Facility Registry using ITI-90.
 
 ![](.//media/simple-facility-registry.png)
 
 **Figure 3.2.1-1: Simple Facility Registry**
+
+Figure 3.2.1-2 shows the sequence of requests to and from the HMIS and
+Mobile App to the Facility Registry.
+
+![](.//media/simple-facility-registry-sequence.png)
+
+**Figure 3.2.2-1: Simple Facility Registry Transaction Sequence**
 
 ### 3.2.2 Federated Facility Registry
 
@@ -392,8 +399,8 @@ The following actors, transactions, and resources shall be used.
   * ITI-90
   * ITI-91
 * Resources
-  * Organization
-  * Location
+  * `Organization`
+  * `Location`
 
 Other sources will act as a Care Services Selective Suppliers (Location 
 Distance option) to update the Facility Registry content.  Figure 3.2.3-1 
@@ -406,6 +413,14 @@ Consumer as needed.
 ![](.//media/federated-facility-registry.png)
 
 **Figure 3.2.2-1: Federated Facility Registry**
+
+Figure 3.2.2-2 shows the sequence of requests to and from the Registry
+and the various sources as well as a mobile app querying the entire data
+set.
+
+![](.//media/federated-facility-registry-sequence.png)
+
+**Figure 3.2.2-2: Federated Facility Registry Transaction Sequence**
 
 ### 3.2.3 Simple Facility Registry with Services
 
@@ -420,9 +435,9 @@ The following actors, transactions, and resources shall be used.
 * Transactions
   * ITI-90
 * Resources
-  * Organization
-  * Location
-  * HealthcareService
+  * `Organization`
+  * `Location`
+  * `HealthcareService`
 
 Clients will act as a Care Services Selective Consumer (Location Distance
 option) to search the Facility Registry content.  Figure 3.2.3-1 shows a
@@ -447,9 +462,9 @@ The following actors, transactions, and resources shall be used.
   * ITI-90
   * ITI-91
 * Resources
-  * Organization
-  * Location
-  * HealthcareService
+  * `Organization`
+  * `Location`
+  * `HealthcareService`
 
 Other sources will act as a Care Services Selective Suppliers 
 (Location Distance option) to update the Facility Registry content.  
@@ -463,7 +478,7 @@ mobile app querying facility data using ITI-90.
 
 # 4 Health Worker Registry
 
-## 4.1 Use Cases
+## 4.1 Implementations
 
 ### 4.1.1 Health Worker Registry
 
@@ -492,9 +507,9 @@ The following actors, transactions, and resources shall be used.
   * ITI-90
   * ITI-91
 * Resources
-  * Practitioner
-  * PractitionerRole
-  * HealthcareService
+  * `Practitioner`
+  * `PractitionerRole`
+  * `HealthcareService`
 
 
 
@@ -508,7 +523,7 @@ practitioners and can optionally include healthcare services.
 
 See the Facility Registry for [Facilities and Jurisdictions](#31-facilities-and-jurisdictions)
 
-## 5.2 Use Cases
+## 5.2 Implementations
 
 ### 5.2.1 Care Services Registry
 
@@ -533,9 +548,9 @@ The following actors, transactions, and resources shall be used.
   * ITI-90
   * ITI-91
 * Resources
-  * Organization
-  * Location
-  * Practitioner
-  * PractitionerRole
-  * HealthcareService
+  * `Organization`
+  * `Location`
+  * `Practitioner`
+  * `PractitionerRole`
+  * `HealthcareService`
 
