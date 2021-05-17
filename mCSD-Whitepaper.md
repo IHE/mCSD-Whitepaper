@@ -480,29 +480,113 @@ mobile app querying facility data using ITI-90.
 
 ## 4.1 Implementations
 
-### 4.1.1 Health Worker Registry
+### 4.1.1 Simple Health Worker Registry
 
-A Health Worker Registry could be operationalized by collecting and
-collating underlying provider demographic content from multiple clinical
-colleges (e.g. College of Physicians and Surgeons, College of Nurses,
-College of Pharmacists, etc.). These Colleges exert governance over their
-membership, which may include a requirement of licensure in the
-self-governing body in order to legally practice in a jurisdiction. As
-such, the underlying Colleges will maintain the content and a Health
-Worker Registry would periodically refresh its content from these
-multiple underlying sources and execute necessary cross-referencing and
-de-duplication workflows to support an interlinked registry relating
-WHICH workers provide WHAT SERVICES, WHERE.
-
-This registry can access a Facility Registry to link practitioners
-to where they work.
+A Simple Health Worker Registry will allow any searches on its health worker 
+data.  It will contain Practitioner and PractitionerRole data.  
 
 The following actors, transactions, and resources shall be used.
 
 * Actors (Options)
-  * Care Services Selective Supplier 
-  * Care Services Update Supplier 
-  * Care Services Update Consumer 
+  * Care Services Selective Supplier
+* Transactions
+  * ITI-90
+* Resources
+  * `Practitioner`
+  * `PractitionerRole`
+
+Clients will act as a Care Services Selective Consumer 
+to search the Health Worker Registry content.  Figure 4.1.1-1 shows a
+Health Management Information System (HMIS) and a Mobile App querying the 
+Health Worker Registry using ITI-90.
+
+![](.//media/simple-practitioner-registry.png)
+
+**Figure 4.1.1-1: Simple Health Worker Registry**
+
+Figure 4.1.1-2 shows the sequence of requests to and from the HMIS and
+Mobile App to the Health Worker Registry.
+
+![](.//media/simple-practitioner-registry-sequence.png)
+
+**Figure 4.1.2-1: Simple Health Worker Registry Transaction Sequence**
+
+### 4.1.2 Federated Health Worker Registry
+
+In a distributed environment, some aspects of the health workers are managed 
+in multiple systems so they need to be federated using ITI-91.  Some
+systems may also need to pull full updates from the registry instead
+of searching.
+
+The following actors, transactions, and resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier
+  * Care Services Update Supplier
+  * Care Services Update Consumer
+* Transactions
+  * ITI-90
+  * ITI-91
+* Resources
+  * `Practitioner`
+  * `PractitionerRole`
+
+Other sources will act as a Care Services Selective Suppliers 
+to update the Health Worker Registry content.  Figure 4.1.3-1 
+shows a federated system of servers sending their content to a 
+Federated Health Worker Registry using ITI-91 and a mobile app querying 
+health worker data using ITI-90.  Each server can also pull the full 
+combined data set from the Health Worker Registry as a Care Services Update 
+Consumer as needed.
+
+![](.//media/federated-practitioner-registry.png)
+
+**Figure 4.1.2-1: Federated Health Worker Registry**
+
+Figure 4.1.2-2 shows the sequence of requests to and from the Registry
+and the various sources as well as a mobile app querying the entire data
+set.
+
+![](.//media/federated-practitioner-registry-sequence.png)
+
+**Figure 4.1.2-2: Federated Health Worker Registry Transaction Sequence**
+
+### 4.1.3 Simple Health Worker Registry with Services
+
+This registry is similar to the [Simple Health Worker 
+Registry](#321-simple-health-worker-registry) but it also includes healthcare 
+service data.
+
+The following actors, transactions, and resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier
+* Transactions
+  * ITI-90
+* Resources
+  * `Practitioner`
+  * `PractitionerRole`
+  * `HealthcareService`
+
+Clients will act as a Care Services Selective Consumer 
+to search the Health Worker Registry content.  Figure 4.1.3-1 shows a
+Health Management Information System and a Mobile App querying the Facility
+Registry using ITI-90.
+
+![](.//media/simple-practitioner-services.png)
+
+**Figure 4.1.3-1: Simple Health Worker Registry with Services**
+
+
+### 4.1.4 Federated Health Worker Registry with Services
+
+
+The following actors, transactions, and resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier
+  * Care Services Update Consumer
+  * Care Services Update Supplier
 * Transactions
   * ITI-90
   * ITI-91
@@ -511,6 +595,15 @@ The following actors, transactions, and resources shall be used.
   * `PractitionerRole`
   * `HealthcareService`
 
+Other sources will act as a Care Services Selective Suppliers 
+to update the Health Worker Registry content.  
+Figure 4.1.4-1 shows a federated system of health worker sources sending 
+their content to a Federated Health Worker Registry using ITI-91 and a 
+mobile app querying health worker data using ITI-90.  
+
+![](.//media/federated-practitioner-services.png)
+
+**Figure 4.1.4-1: Federated Health Worker Registry with Services**
 
 
 # 5 Care Services Registry
@@ -527,16 +620,51 @@ See the Facility Registry for [Facilities and Jurisdictions](#31-facilities-and-
 
 ### 5.2.1 Care Services Registry
 
-To support health system planning, resource management, and patient
-referral workflows, it will be important to be able to relate healthcare
-facilities with the health services that are provided there. An
-interlinked registry may be operationalized that leverages mCSD to
-cross-reference a code list of health services with the unique list of
-facility IDs. Such a cross reference may include information related to
-service provision availability (days and times of day).
+In some instances, all the care services data would be combined into
+a single central server for easier access.  In most cases this server
+would pull data from various source servers (such as a Facility Registry
+or Health Worker Registry) and link the resources together.
 
-In a more complicated environment, some aspects of the registry may
-be managed in multiple systems so they need to be federated using ITI-91.
+The following actors, transactions, and resources shall be used.
+
+* Actors (Options)
+  * Care Services Selective Supplier (Location Distance option)
+  * Care Services Update Supplier (Location Distance option)
+  * Care Services Update Consumer (Location Distance option)
+* Transactions
+  * ITI-90
+  * ITI-91
+* Resources
+  * `Organization`
+  * `Location`
+  * `Practitioner`
+  * `PractitionerRole`
+
+Other sources will act as a Care Services Selective Suppliers 
+to update the Care Services Registry content.  Figure 5.2.1-1 
+shows a federated system of servers sending their content to a 
+Federated Care Services Registry using ITI-91 and a mobile app querying 
+data using ITI-90.  Each server can also pull the full 
+combined data set from the Care Services Registry as a Care Services Update 
+Consumer as needed.
+
+![](.//media/federated-care-registry.png)
+
+**Figure 5.2.1-1: Federated Care Services Registry**
+
+Figure 5.2.1-2 shows the sequence of requests to and from the Registry
+and the various sources as well as a mobile app querying the entire data
+set.
+
+![](.//media/federated-care-registry-sequence.png)
+
+**Figure 5.2.1-2: Federated Care Services Registry Transaction Sequence**
+
+
+### 5.2.2 Care Services Registry with Services
+
+A Care Services Registry may also include data on the Healthcare Services
+provided and this implementation includes that data as well.
 
 The following actors, transactions, and resources shall be used.
 
@@ -553,4 +681,17 @@ The following actors, transactions, and resources shall be used.
   * `Practitioner`
   * `PractitionerRole`
   * `HealthcareService`
+
+Other sources will act as a Care Services Selective Suppliers 
+to update the Care Services Registry content.  Figure 5.2.2-1 
+shows a federated system of servers sending their content to a 
+Federated Care Services Registry using ITI-91 and a mobile app querying 
+data using ITI-90.  Each server can also pull the full 
+combined data set from the Care Services Registry as a Care Services Update 
+Consumer as needed.
+
+![](.//media/federated-care-registry-services.png)
+
+**Figure 5.2.2-1: Federated Care Services Registry with Services**
+
 
