@@ -171,7 +171,7 @@ The existing use cases all give good examples of specific implementations, such 
 A developing country has decided to implement a Master Facility List
 (MFL) based on recommendations from the WHO in the [MFL Resource
 Package](https://www.who.int/healthinfo/country_monitoring_evaluation/mfl/en/).
-This resource includes a minimum data set to uniquely identify, location,
+This resource includes a minimum data set to uniquely identify, locate,
 and contact a specific facility. Since this will be a single source of
 information for the country, there may be differing hierarchies that
 need to be supported for the facilities. For example, one hierarchy would
@@ -181,19 +181,41 @@ located separately from administrative regions. Yet another could be a
 reporting hierarchy used to send data to health system managers, and on
 up to international organizations.
 
+
+### 2.1.1 Implementation
+
 > **Solution Option:** [Simple Facility Registry](#321-simple-facility-registry)
+
+The MFL can implement a Simple Facility Registry as a sole source of the facility
+data.  Clients can then query that data.  The MFL can utilize mCSD [Facilites and 
+Jurisdictions](#31-facilities-and-jurisdictions) with multilple 
+[hierarchies](#311-hierarchies).
+
 
 ## 2.2 Care Services Registry
 
 To support health system planning, resource management, and patient
 referral workflows, it will be important to be able to relate healthcare
-facilities with the health services that are provided there. An
-interlinked registry may be operationalized that leverages mCSD to
+facilities with the health services that are provided there by practitioners. A
+care services registry may be operationalized that leverages mCSD to
 cross-reference a code list of health services with the unique list of
 facility IDs. Such a cross reference may include information related to
 service provision availability (days and times of day).
 
-> **Solution Option:** [Federated InterLinked Registry with Services](#521-federated-care-services-registry-with-services)
+## 2.2.1 Implementation
+
+> **Solution Option:** [Federated Care Services Registry with Services](#521-federated-care-services-registry-with-services)
+
+This Care Services Registry supports all the information contained in mCSD
+in a federated environment.  Data can be managed in separate registries
+and combined in the care services registry for managed access to the complete
+data set.  A [Health Worker Registry](#23-health-worker-registry) and/or a
+[Federated Facility Registry](#26-federated-facility-registry) can send
+data updates to the care services registry.  There can be multiple data sources,
+for example from private and public hospitals.  Internal business processes
+can be used by the care services registry to link this data or reconcile
+duplicates as needed.  Clients can then query the combined data set without
+requiring access to the various data sources.
 
 
 ## 2.3 Health Worker Registry
@@ -210,7 +232,14 @@ multiple underlying sources and execute necessary cross-referencing and
 de-duplication workflows to support an interlinked registry relating
 WHICH workers provide WHAT SERVICES, WHERE.
 
+### 2.3.1 Implementation
+
 > **Solution Option:** [Federated Health Worker Registry](#412-federated-health-worker-registry)
+
+A central federated health worker registry can be set up that pulls data
+from various other sources of practitioner data such as the clinical colleges
+and licensing boards.  Data can also be pulled from HR systems and combine
+this data with the licensing and training data.
 
 ## 2.4 Functioning Facilities Registry
 
@@ -219,7 +248,15 @@ construction teams, infrastructure, maintenance, then share that
 information with the public. There is a need to immediately view services,
 openings, closures.
 
+### 2.4.1 Implementation
+
 > **Solution Option:** [Simple Facility Registry with Services](#323-simple-facility-registry-with-services)
+
+This registry is an extension of the [Master Facility List](#21-master-facility-list)
+to include services data for the facilities.  It would also include the times
+those services are available so it can be used to look up locations for 
+referrals.  It can also be used internally to track work and closures of
+the facilities.
 
 
 ## 2.5 Health Worker Registry with Services
@@ -235,7 +272,13 @@ information about facilities. For example, in one country, there are
 6 DHIS2 platforms that are not aligned, and are struggling to maintain
 metadata.
 
+### 2.6.1 Implementation
+
 > **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
+
+There can be a central federated facility registry that can pull data
+from the DHIS2 platforms and integrate it.  Once the data has been aligned,
+it can then be used to update the source systems based on internal policies.
 
 
 ## 2.7 Federated Data Collection
@@ -245,7 +288,12 @@ A way is needed to integrate some regular, large data collections
 data sources are not connected to the maintenance of the facilities. One
 should be able to integrate information from large data collection.
 
+### 2.7.1 Implementation
+
 > **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
+
+The data collection systems can support mCSD to share the collected data
+to the central facility registry.
 
 ## 2.8 Aggregate Data Collection
 
@@ -380,7 +428,7 @@ Mobile App to the Facility Registry.
 
 ![](.//media/simple-facility-registry-sequence.png)
 
-**Figure 3.2.2-1: Simple Facility Registry Transaction Sequence**
+**Figure 3.2.1-2: Simple Facility Registry Transaction Sequence**
 
 ### 3.2.2 Federated Facility Registry
 
