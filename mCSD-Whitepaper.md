@@ -202,7 +202,7 @@ cross-reference a code list of health services with the unique list of
 facility IDs. Such a cross reference may include information related to
 service provision availability (days and times of day).
 
-## 2.2.1 Implementation
+### 2.2.1 Implementation
 
 > **Solution Option:** [Federated Care Services Registry with Services](#521-federated-care-services-registry-with-services)
 
