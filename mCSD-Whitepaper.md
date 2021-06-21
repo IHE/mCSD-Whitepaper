@@ -48,7 +48,7 @@ The HL7® FHIR® (Fast Healthcare Interoperability Resources) standard defines h
 
 A guiding tenant of the evolving FHIR standard is that 80% of interoperability use cases should be satisfied out-of-the-box by any combination of the more than 130 base resources. Profiles may be created from the base resources to address diverse use cases, such as domain-specific ones like oncology, specific deployments like a patient identity registry, and local requirements such as incorporating legal definitions of marital status and race into data dictionaries. A simple use case, like a case report, up to a large use case like adapting FHIR to an entire country healthcare system, may be profiled from the base FHIR resources. Aspects of consent, security, and privacy are also embodied in profiles. 
 
-[Integrating the Healthcare Enterprise (IHE)](http://www.ihe.net) supports the open, consensus-driven development of profiles for FHIR resources and other healthcare specifications. The profiling of base resources for use cases are increasingly specified in machine-computable FHIR Implementation Guides (IGs). The terms 'profile' and 'implementation guide' may be used interchangeably, though profiles for FHIR are specified in Implmentation Guides.
+[Integrating the Healthcare Enterprise (IHE)](http://www.ihe.net) supports the open, consensus-driven development of profiles for FHIR resources and other healthcare specifications. The profiling of base resources for use cases are increasingly specified in machine-computable FHIR Implementation Guides (IGs). The terms 'profile' and 'implementation guide' may be used interchangeably, though profiles for FHIR are increasingly being specified in Implmentation Guides.
 
 This paper outlines the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) which is designed to help implementation of services discovery using registries. A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can then be discoverable. 
 
@@ -108,7 +108,17 @@ Some intended audiences include:
 - Health Systems
 - Executive Offices: CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.
 
-## 1.3 Overview of Mobile Care Services Discovery
+## 1.3 Simple Use Cases That May Not Require Mobile Care Services Discovery
+
+mCSD is aligned around the use of registries -- common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. There may be simple use cases that do not require mCSD, registries, or care services discovery through mCSD.
+
+Prototypes and demonstrations often use a single FHIR server. Often in prototyping only one FHIR server is used and there is not an immediate need to deploy a Facility, Health Worker, or Care Services Registry. In this reduced use case, there is no immediate concern of implementing authoritative registries. For example, Healthcare Services resources in the base resources already possess `providedBy` and `location` references for the respective Organizations and Locations. Simple attribution can be applied using the base resources without mCSD. A HealthcareService resource or Location can be queried using existing search methods to identify the services provided.
+
+Use cases with simple hierarchies may not require mCSD. mCSD supports more complex organizational hierarchies discussed below. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same ministry. However, for simple setups, there may only be one parent.
+
+While mCSD in its fullest extent may not be required for simple or demo use cases, it is recommended to use mCSD when going beyond the above scenarios. mCSD can provide implementers with standards-based and tested ways to plan for and approach deployment of full registries to support health information exchange.
+
+## 1.4 Overview of Mobile Care Services Discovery
 
 The Mobile Care Services Discovery (mCSD) Profile supports discovery of 
 care services resources using a RESTful interface in interrelated, 
