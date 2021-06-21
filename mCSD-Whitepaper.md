@@ -171,6 +171,7 @@ or primary care services. The combination of a Healthcare Service offered
 at a Location may have specific attributes including contact person, hours
 of operation, etc.
 
+The IHE Profiles, including mCSD, express use cases with `Actors`, `Transactions`, `Resources`, and `Options` to create a set of interoperability constraints. `Actors` are the participants in the workflow. `Transactions` are the interactions between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
 # 2 Key Use Cases
 
