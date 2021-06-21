@@ -245,9 +245,9 @@ WHICH workers provide WHAT SERVICES, WHERE.
 
 > **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
 
-    Practitioners are commonly classified as such based on qualifications and licensure to perform in a juridiction. However, some clinical care roles may not require licensure. An example may be a nurse's aide who may not require licensure or formal qualification but are providing care. In Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs).
+> Practitioners are commonly classified as such based on qualifications and licensure to perform in a juridiction. However, some clinical care roles may not require licensure. An example may be a nurse's aide who may not require licensure or formal qualification but are providing care. In Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs).
 
-    The mCSD Profile does not specify whether such roles should be expressed nor how they should be captured in FHIR or mCSD. The mCSD maintainers are seeking for additional guidance from the global community on the extent to which such roles should be expressed in FHIR and how to address these roles in the Profile in the future.
+> The mCSD Profile does not specify whether such roles should be expressed nor how they should be captured in FHIR or mCSD. The mCSD maintainers are seeking for additional guidance from the global community on the extent to which such roles should be expressed in FHIR and how to address these roles in the Profile in the future.
 
 ### 2.3.1 Implementation
 
