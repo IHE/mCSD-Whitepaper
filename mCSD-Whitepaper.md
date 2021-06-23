@@ -108,15 +108,21 @@ Some intended audiences include:
 - Health Systems
 - Executive Offices: CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.
 
-## 1.3 Simple Use Cases That May Not Require Mobile Care Services Discovery
+## 1.3 How Mobile Care Services Discovery Builds on Core FHIR Resources
 
-mCSD is aligned around the use of registries -- common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. There may be simple use cases that do not require mCSD, registries, or care services discovery through mCSD.
+The core FHIR resources provide a robust framework for linking patients with when, where, how, and why they receive care. For example, Healthcare Services resources possess `providedBy` and `location` references for the respective Organizations and Locations. A HealthcareService resource or Location can be queried using existing search methods to identify the services provided. 
 
-Prototypes and demonstrations often use a single FHIR server. Often in prototyping only one FHIR server is used and there is not an immediate need to deploy a Facility, Health Worker, or Care Services Registry. In this reduced use case, there is no immediate concern of implementing authoritative registries. For example, Healthcare Services resources in the base resources already possess `providedBy` and `location` references for the respective Organizations and Locations. Simple attribution can be applied using the base resources without mCSD. A HealthcareService resource or Location can be queried using existing search methods to identify the services provided.
+Another example of FHIR's maturity is that Practitioner and PractitionerRole are separate resources. As noted in the [FHIR R4 specification](https://www.hl7.org/fhir/practitionerrole.html#bnc):
 
-Use cases with simple hierarchies may not require mCSD. mCSD supports more complex organizational hierarchies discussed below. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same ministry. However, for simple setups, there may only be one parent.
+>"Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles. The role can be limited to a specific period, after which authorization for this role ends."
 
-While mCSD in its fullest extent may not be required for simple or demo use cases, it is recommended to use mCSD when going beyond the above scenarios. mCSD can provide implementers with standards-based and tested ways to plan for and approach deployment of full registries to support health information exchange.
+What mCSD provides are extensions of the core resources to support health information systems across the enterprise, including:
+
+* **Authoritative registries** that legacy applications can query and update about where services are performed, when, and by whom. mCSD helps implementers identify the minimum queries and updates that legacy systems must support. 
+* Registries are a foundation of **Care Services Discovery** that helps patients get the care they need, from a licensed practitioner, in a location where it is provided.
+* mCSD also provides extensions that support diverse funding mechanisms and **attribution** for reporting. For example, mCSD supports complex organizational hierarchies discussed below. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same ministry.
+
+mCSD can provide implementers with standards-based and tested ways to plan for and approach deployment of full registries to support health information exchange.
 
 ## 1.4 Overview of Mobile Care Services Discovery
 
