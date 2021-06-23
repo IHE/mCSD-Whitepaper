@@ -245,9 +245,9 @@ WHICH workers provide WHAT SERVICES, WHERE.
 
 > **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
 
-> Practitioners are commonly classified as such based on qualifications and licensure to perform in a juridiction. However, some clinical care roles may not require licensure. An example may be a nurse's aide who may not require licensure or formal qualification but are providing care. In Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs).
+> In FHIR, a Practitioner is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a juridiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
 
-> The mCSD Profile does not specify whether such roles should be expressed nor how they should be captured in FHIR or mCSD. The mCSD maintainers are seeking for additional guidance from the global community on the extent to which such roles should be expressed in FHIR and how to address these roles in the Profile in the future.
+> The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
 ### 2.3.1 Implementation
 
