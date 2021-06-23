@@ -171,7 +171,9 @@ or primary care services. The combination of a Healthcare Service offered
 at a Location may have specific attributes including contact person, hours
 of operation, etc.
 
-The IHE Profiles, including mCSD, express use cases with `Actors`, `Transactions`, `Resources`, and `Options` to create a set of interoperability constraints. `Actors` are the participants in the workflow. `Transactions` are the interactions between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
+### 1.4.1 IHE Terminology
+
+The IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
 # 2 Key Use Cases
 
@@ -245,7 +247,7 @@ WHICH workers provide WHAT SERVICES, WHERE.
 
 > **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
 
-> In FHIR, a Practitioner is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a juridiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
+> In FHIR, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a juridiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
 
 > The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
