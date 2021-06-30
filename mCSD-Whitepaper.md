@@ -48,7 +48,7 @@ The HL7® FHIR® (Fast Healthcare Interoperability Resources) standard defines h
 
 A guiding tenant of the evolving FHIR standard is that 80% of interoperability use cases should be satisfied out-of-the-box by any combination of the more than 130 base resources. Profiles may be created from the base resources to address diverse use cases, such as domain-specific ones like oncology, specific deployments like a patient identity registry, and local requirements such as incorporating legal definitions of marital status and race into data dictionaries. A simple use case, like a case report, up to a large use case like adapting FHIR to an entire country healthcare system, may be profiled from the base FHIR resources. Aspects of consent, security, and privacy are also embodied in profiles. 
 
-[Integrating the Healthcare Enterprise (IHE)](http://www.ihe.net) supports the open, consensus-driven development of profiles for FHIR resources and other healthcare specifications. The profiling of base resources for use cases are increasingly specified in machine-computable FHIR Implementation Guides (IGs). The terms 'profile' and 'implementation guide' may be used interchangeably, though profiles for FHIR are specified in Implmentation Guides.
+[Integrating the Healthcare Enterprise (IHE)](http://www.ihe.net) supports the open, consensus-driven development of profiles for FHIR resources and other healthcare specifications. The profiling of base resources for use cases are increasingly specified in machine-computable FHIR Implementation Guides (IGs). The terms 'profile' and 'implementation guide' may be used interchangeably, though profiles for FHIR are increasingly being specified in Implmentation Guides.
 
 This paper outlines the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) which is designed to help implementation of services discovery using registries. A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can then be discoverable. 
 
@@ -108,7 +108,23 @@ Some intended audiences include:
 - Health Systems
 - Executive Offices: CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.
 
-## 1.3 Overview of Mobile Care Services Discovery
+## 1.3 How Mobile Care Services Discovery Builds on Core FHIR Resources
+
+The core FHIR resources provide a robust framework for linking patients with when, where, how, and why they receive care. For example, Healthcare Services resources possess `providedBy` and `location` references for the respective Organizations and Locations. A HealthcareService resource or Location can be queried using existing search methods to identify the services provided. 
+
+Another example of FHIR's maturity is that Practitioner and PractitionerRole are separate resources. As noted in the [FHIR R4 specification](https://www.hl7.org/fhir/practitionerrole.html#bnc):
+
+>"Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles. The role can be limited to a specific period, after which authorization for this role ends."
+
+What mCSD provides are extensions of the core resources to support health information systems across the enterprise, including:
+
+* **Authoritative registries** that legacy applications can query and update about where services are performed, when, and by whom. mCSD helps implementers identify the minimum queries and updates that legacy systems must support. 
+* Registries are a foundation of **Care Services Discovery** that helps patients get the care they need, from a licensed practitioner, in a location where it is provided.
+* mCSD also provides extensions that support diverse funding mechanisms and **attribution** for reporting. For example, mCSD supports complex organizational hierarchies discussed below. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same ministry.
+
+mCSD can provide implementers with standards-based and tested ways to plan for and approach deployment of full registries to support health information exchange.
+
+## 1.4 Overview of Mobile Care Services Discovery
 
 The Mobile Care Services Discovery (mCSD) Profile supports discovery of 
 care services resources using a RESTful interface in interrelated, 
@@ -161,6 +177,9 @@ or primary care services. The combination of a Healthcare Service offered
 at a Location may have specific attributes including contact person, hours
 of operation, etc.
 
+### 1.4.1 IHE Terminology
+
+The IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
 # 2 Key Use Cases
 
@@ -231,6 +250,12 @@ Worker Registry would periodically refresh its content from these
 multiple underlying sources and execute necessary cross-referencing and
 de-duplication workflows to support an interlinked registry relating
 WHICH workers provide WHAT SERVICES, WHERE.
+
+> **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
+
+> In FHIR, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a juridiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
+
+> The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
 ### 2.3.1 Implementation
 
