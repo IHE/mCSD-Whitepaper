@@ -64,7 +64,7 @@ place among affiliated or unaffiliated care providers. The IT
 Infrastructure (ITI) domain of IHE has addressed many of these
 challenges by defining a series of integration profiles to address
 specific aspects of exchanging healthcare information. Each integration
-profiles addresses part of the broad set of challenges involved in
+profile addresses part of the broad set of challenges involved in
 health information exchange. The profiles, however, do not attempt to
 address governance and policy choices that significantly affect how the
 profile is adapted in any particular community. This white paper cannot
@@ -80,7 +80,7 @@ themselves. Thus, while each community will generate an architecture
 that meets its individual needs, the use of IHE profiles will lead to
 the creation of standards-based communities.
 
-This white paper will focus on explaing how the mCSD profile can be used
+This white paper will focus on explaining how the mCSD profile can be used
 to address specific implementation needs.  Since mCSD doesn’t require a 
 particular set of FHIR resources to support, there is a need to define 
 various implementations and the additional requirements they would have.
@@ -139,7 +139,7 @@ Delivery Networks (IDNs), Non-Government Organizations (NGOs), Faith-Based
 Organizations (FBOs) or even a one-physician family practice. An 
 organization has a unique identifier and may have additional 
 administrative attributes such as contact person, mailing address, etc. 
-Departments of an institution, or other administrative units, may be 
+departments of an institution, or other administrative units, may be 
 represented as child Organizations of a parent Organization.
 
 2. **Facility** – Facilities are physical care delivery sites such as 
@@ -206,8 +206,8 @@ up to international organizations.
 > **Solution Option:** [Simple Facility Registry](#321-simple-facility-registry)
 
 The MFL can implement a Simple Facility Registry as a sole source of the facility
-data.  Clients can then query that data.  The MFL can utilize mCSD [Facilites and 
-Jurisdictions](#31-facilities-and-jurisdictions) with multilple 
+data. Clients can then query that data. The MFL can utilize mCSD [Facilites and 
+Jurisdictions](#31-facilities-and-jurisdictions) with multiple 
 [hierarchies](#311-hierarchies).
 
 
@@ -226,14 +226,14 @@ service provision availability (days and times of day).
 > **Solution Option:** [Care Services Registry](#521-care-services-registry)
 
 This Care Services Registry supports all the information contained in mCSD
-in a federated environment.  Data can be managed in separate registries
+in a federated environment. Data can be managed in separate registries
 and combined in the care services registry for managed access to the complete
-data set.  A [Health Worker Registry](#23-health-worker-registry) and/or a
+data set. A [Health Worker Registry](#23-health-worker-registry) and/or a
 [Federated Facility Registry](#26-federated-facility-registry) can send
-data updates to the care services registry.  There can be multiple data sources,
-for example from private and public hospitals.  Internal business processes
+data updates to the care services registry. There can be multiple data sources,
+for example from private and public hospitals. Internal business processes
 can be used by the care services registry to link this data or reconcile
-duplicates as needed.  Clients can then query the combined data set without
+duplicates as needed. Clients can then query the combined data set without
 requiring access to the various data sources.
 
 
@@ -253,7 +253,7 @@ WHICH workers provide WHAT SERVICES, WHERE.
 
 > **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
 
-> In FHIR, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a juridiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
+> In FHIR, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a jurisdiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel. 
 
 > The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
@@ -302,7 +302,7 @@ metadata.
 > **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
 
 There can be a central federated facility registry that can pull data
-from the DHIS2 platforms and integrate it.  Once the data has been aligned,
+from the DHIS2 platforms and integrate it. Once the data has been aligned,
 it can then be used to update the source systems based on internal policies.
 
 
