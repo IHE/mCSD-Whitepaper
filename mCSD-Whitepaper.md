@@ -64,7 +64,7 @@ place among affiliated or unaffiliated care providers. The IT
 Infrastructure (ITI) domain of IHE has addressed many of these
 challenges by defining a series of integration profiles to address
 specific aspects of exchanging healthcare information. Each integration
-profiles addresses part of the broad set of challenges involved in
+profile addresses part of the broad set of challenges involved in
 health information exchange. The profiles, however, do not attempt to
 address governance and policy choices that significantly affect how the
 profile is adapted in any particular community. This white paper cannot
@@ -80,7 +80,7 @@ themselves. Thus, while each community will generate an architecture
 that meets its individual needs, the use of IHE profiles will lead to
 the creation of standards-based communities.
 
-This white paper will focus on explaing how the mCSD profile can be used
+This white paper will focus on explaining how the mCSD profile can be used
 to address specific implementation needs.  Since mCSD doesn’t require a 
 particular set of FHIR resources to support, there is a need to define 
 various implementations and the additional requirements they would have.
