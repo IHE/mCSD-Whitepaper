@@ -436,7 +436,7 @@ The following actors, transactions, and resources shall be used.
 * Actors (Options)
   * Care Services Selective Supplier (Location Distance option)
 * Transactions
-  * ITI-90
+  * Find Matching Care Services \[ITI-90\]
 * Resources
   * `Organization`
   * `Location`
@@ -445,7 +445,7 @@ The following actors, transactions, and resources shall be used.
 Clients will act as a Care Services Selective Consumer (Location Distance
 option) to search the Facility Registry content.  Figure 3.2.1-1 shows a
 Health Management Information System (HMIS) and a Mobile App querying the 
-Facility Registry using ITI-90.
+Facility Registry using Find Matching Care Services \[ITI-90\].
 
 ![](.//media/simple-facility-services.png)
 
@@ -461,7 +461,7 @@ Mobile App to the Facility Registry.
 ### 3.2.2 Federated Facility Registry
 
 In a distributed environment, some aspects of the facilities are managed 
-in multiple systems so they need to be federated using ITI-91.  Some
+in multiple systems so they need to be federated using Request Care Services Updates \[ITI-91\].  Some
 systems may also need to pull full updates from the registry instead
 of searching.  A federated facility registry can optionally include
 healthcare service content.
@@ -473,8 +473,8 @@ The following actors, transactions, and resources shall be used.
   * Care Services Update Supplier (Location Distance option)
   * Care Services Update Consumer (Location Distance option)
 * Transactions
-  * ITI-90
-  * ITI-91
+  * Find Matching Care Services \[ITI-90\]
+  * Request Care Services Updates \[ITI-91\]
 * Resources
   * `Organization`
   * `Location`
@@ -483,8 +483,8 @@ The following actors, transactions, and resources shall be used.
 Other sources will act as a Care Services Selective Suppliers (Location 
 Distance option) to update the Facility Registry content.  Figure 3.2.3-1 
 shows a federated system of servers sending their content to a 
-Federated Facility Registry using ITI-91 and a mobile app querying 
-facility data using ITI-90.  Each server can also pull the full 
+Federated Facility Registry using Request Care Services Updates \[ITI-91\] and a mobile app querying 
+facility data using Find Matching Care Services \[ITI-90\].  Each server can also pull the full 
 combined data set from the Facility Registry as a Care Services Update 
 Consumer as needed.
 
@@ -515,7 +515,7 @@ The following actors, transactions, and resources shall be used.
 * Actors (Options)
   * Care Services Selective Supplier
 * Transactions
-  * ITI-90
+  * Find Matching Care Services \[ITI-90\]
 * Resources
   * `Practitioner`
   * `PractitionerRole`
@@ -524,7 +524,7 @@ The following actors, transactions, and resources shall be used.
 Clients will act as a Care Services Selective Consumer 
 to search the Health Worker Registry content.  Figure 4.1.1-1 shows a
 Health Management Information System (HMIS) and a Mobile App querying the 
-Health Worker Registry using ITI-90.
+Health Worker Registry using Find Matching Care Services \[ITI-90\].
 
 ![](.//media/simple-practitioner-services.png)
 
@@ -540,7 +540,7 @@ Mobile App to the Health Worker Registry.
 ### 4.1.2 Federated Health Worker Registry
 
 In a distributed environment, some aspects of the health workers are managed 
-in multiple systems so they need to be federated using ITI-91.  Some
+in multiple systems so they need to be federated using Request Care Services Updates \[ITI-91\].  Some
 systems may also need to pull full updates from the registry instead
 of searching.  It will optionally include healthcare service content.
 
@@ -551,8 +551,8 @@ The following actors, transactions, and resources shall be used.
   * Care Services Update Supplier
   * Care Services Update Consumer
 * Transactions
-  * ITI-90
-  * ITI-91
+  * Find Matching Care Services \[ITI-90\]
+  * Request Care Services Updates \[ITI-91\]
 * Resources
   * `Practitioner`
   * `PractitionerRole`
@@ -561,8 +561,8 @@ The following actors, transactions, and resources shall be used.
 Other sources will act as a Care Services Selective Suppliers 
 to update the Health Worker Registry content.  Figure 4.1.3-1 
 shows a federated system of servers sending their content to a 
-Federated Health Worker Registry using ITI-91 and a mobile app querying 
-health worker data using ITI-90.  Each server can also pull the full 
+Federated Health Worker Registry using Request Care Services Updates \[ITI-91\] and a mobile app querying 
+health worker data using Find Matching Care Services \[ITI-90\].  Each server can also pull the full 
 combined data set from the Health Worker Registry as a Care Services Update 
 Consumer as needed.
 
@@ -605,8 +605,8 @@ The following actors, transactions, and resources shall be used.
   * Care Services Update Supplier (Location Distance option)
   * Care Services Update Consumer (Location Distance option)
 * Transactions
-  * ITI-90
-  * ITI-91
+  * Find Matching Care Services \[ITI-90\]
+  * Request Care Services Updates \[ITI-91\]
 * Resources
   * `Organization`
   * `Location`
@@ -617,8 +617,8 @@ The following actors, transactions, and resources shall be used.
 Other sources will act as a Care Services Selective Suppliers 
 to update the Care Services Registry content.  Figure 5.2.1-1 
 shows a federated system of servers sending their content to a 
-Federated Care Services Registry using ITI-91 and a mobile app querying 
-data using ITI-90.  Each server can also pull the full 
+Federated Care Services Registry using Request Care Services Updates \[ITI-91\] and a mobile app querying 
+data using Find Matching Care Services \[ITI-90\].  Each server can also pull the full 
 combined data set from the Care Services Registry as a Care Services Update 
 Consumer as needed.
 
