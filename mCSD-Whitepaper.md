@@ -44,11 +44,13 @@ Supplements and the process used to create them can be found at
 
 # 1 Introduction
 
-This whitepaper will describe some common uses where the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using (https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory registries or directories).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can be discoverable using mCSD. 
+This whitepaper describes some common uses where the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using (https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory registries or directories).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  
 
-The mCSD implementation guide can be used in various configurations, each suited for a different use-case. The variations will be discussed in the context of these common use-cases.  For example, an electronic medical records (EMR) system with the ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided. 
+A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can be discoverable using mCSD. mCSD provides extensions of the core FHIR resources to support health information exchange across the enterprise, including the  queries and updates that legacy systems must support to access authoritative registries. For example, an electronic medical records (EMR) system with the ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided. 
 
-This paper further outlines several use cases that can be adapted to many contexts, including creating facilities and health worker registries. This document is not a substitute for the machine-computable IGs, but rather is complementary.
+mCSD also provides extensions that support diverse funding mechanisms and attribution for reporting. mCSD supports complex organizational hierarchies. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same Ministry of Health.
+
+The mCSD implementation guide can be used in various configurations, each suited for a different use-case. The variations will be discussed in the context of these common use-cases. This paper further outlines several use cases that can be adapted to many contexts, including creating facilities and health worker registries.
 
 ## 1.1 Scope
 
@@ -102,23 +104,7 @@ Some intended audiences include:
 - Health Systems
 - Executive Offices: CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.
 
-## 1.3 How Mobile Care Services Discovery Builds on Core FHIR Resources
-
-The core FHIR resources provide a robust framework for linking patients with when, where, how, and why they receive care. For example, Healthcare Services resources possess `providedBy` and `location` references for the respective Organizations and Locations. A HealthcareService resource or Location can be queried using existing search methods to identify the services provided. 
-
-Another example of FHIR's maturity is that Practitioner and PractitionerRole are separate resources. As noted in the [FHIR R4 specification](https://www.hl7.org/fhir/practitionerrole.html#bnc):
-
->"Practitioner performs different roles within the same or even different organizations. Depending on jurisdiction and custom, it may be necessary to maintain a specific Practitioner Resource for each such role or have a single Practitioner with multiple roles. The role can be limited to a specific period, after which authorization for this role ends."
-
-What mCSD provides are extensions of the core resources to support health information systems across the enterprise, including:
-
-* **Authoritative registries** that legacy applications can query and update about where services are performed, when, and by whom. mCSD helps implementers identify the minimum queries and updates that legacy systems must support. 
-* Registries are a foundation of **Care Services Discovery** that helps patients get the care they need, from a licensed practitioner, in a location where it is provided.
-* mCSD also provides extensions that support diverse funding mechanisms and **attribution** for reporting. For example, mCSD supports complex organizational hierarchies discussed below. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same ministry.
-
-mCSD can provide implementers with standards-based and tested ways to plan for and approach deployment of full registries to support health information exchange.
-
-## 1.4 Overview of Mobile Care Services Discovery
+## 1.3 Overview of Mobile Care Services Discovery
 
 The Mobile Care Services Discovery (mCSD) Profile supports discovery of 
 care services resources using a RESTful interface in interrelated, 
@@ -171,7 +157,7 @@ or primary care services. The combination of a Healthcare Service offered
 at a Location may have specific attributes including contact person, hours
 of operation, etc.
 
-### 1.4.1 IHE Terminology
+### 1.3.1 IHE Terminology
 
 The IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
@@ -320,25 +306,11 @@ should be able to integrate information from large data collection.
 The data collection systems can support mCSD to share the collected data
 to the central facility registry.
 
-## 2.8 Aggregate Data Collection
+## 2.8 Aggregate Data Reporting
 
-* Problem statement
-  * In this use case, a donor invests in vertical public health
-  programs across many countries. The donor has a multi-country
-  dashboard and analytics platform that aggregates data and tracks
-  progress from the program's outcomes at the facility level.
-  * Thus, there are within-country facility IDs issued by the
-  ministry of health, and IDs for facilities used by the
-  multi-country analytics platform.
-  * IDs may change, administrative hierarchies may split, and
-  facilities may drop or be added over time.
+Aggregate data reporting refers to routine reporting, often from a health facility, to an administrative jurisdiction, health financing entity, or external donors and investors.
 
-* Solution is record linkage
-  * The need that the facility ID used within-country should be
-  linked to a multi-country ID, and be updateable.
-  * This is similar to the concept of a client (patient) registry,
-  but for record linkage between organizations, locations, and
-  healthcare services in FHIR types.
+As an example use case, a donor invests in vertical public health programs for epidemic control across many countries. The donor has a multi-country dashboard and analytics platform that aggregates data and tracks progress of program outcomes at the facility level There are within-country facility IDs issued by the Ministry of Health, and IDs for facilities used by the multi-country analytics platform. IDs may change, temporary facilities like immunization sites may be added, administrative hierarchies may split, and facilities may drop or be upgraded to another level of clinical care over time. A similar use case could arise in a country in which public healthcare is decentralized and provided and overseen by subnational political units who engage in routine reporting to the national authority.
 
 > **Solution Option:** [Federated Facility Registry](#322-federated-facility-registry)
 
