@@ -51,28 +51,6 @@ clinicreport <-- clinicb
 ```
 
 ```plantuml
-@startuml simple-facility-registry
-skinparam componentStyle uml2
-skinparam linetype ortho
-
-node registry as "Facility Registry" {
-  component forg as "mCSD Organization"
-  component floc as "mCSD Location"
-  frame "mCSD Facility"
-  frame "mCSD Jurisdiction"
-}
-together {
-  node hmis as "Health Management Information System"
-  node mobile as "Mobile App"
-}
-registry -[hidden]-> hmis
-registry <-- hmis 
-registry <-- mobile 
-
-@enduml
-```
-
-```plantuml
 @startuml simple-facility-registry-sequence
 skinparam componentStyle uml2
 
@@ -91,7 +69,6 @@ end
 
 @enduml
 ```
-
 
 ```plantuml
 @startuml simple-facility-services
@@ -114,42 +91,6 @@ registry <--> mobile
 
 @enduml
 ```
-
-
-```plantuml
-@startuml federated-facility-registry
-skinparam componentStyle uml2
-skinparam linetype ortho
-
-node registry as "Central Facility Registry" {
-  component forg as "mCSD Organization"
-  component floc as "mCSD Location"
-  frame "mCSD Facility"
-  frame "mCSD Jurisdiction"
-}
-
-together {
-  node sourcea as "Facility Source A"
-  node sourceb as "Facility Source B"
-  node sourcec as "Facility Source C"
-}
-
-node mobile as "Mobile App"
-
-
-registry -[hidden]--> sourcea
-registry -[hidden]-> mobile
-
-registry <--> sourcea 
-registry <--> sourceb 
-registry <--> sourcec 
-
-registry <--> mobile 
-
-@enduml
-```
-
-
 
 ```plantuml
 @startuml federated-facility-registry-sequence
@@ -186,8 +127,6 @@ end
 @enduml
 ```
 
-
-
 ```plantuml
 @startuml federated-facility-services
 skinparam componentStyle uml2
@@ -219,29 +158,6 @@ registry <--> app
 @enduml
 ```
 
-
-
-
-```plantuml
-@startuml simple-practitioner-registry
-skinparam componentStyle uml2
-skinparam linetype ortho
-
-node registry as "Health Worker Registry" {
-  component prac as "mCSD Practitioner"
-  component prole as "mCSD PractitionerRole"
-}
-together {
-  node hmis as "Health Management Information System"
-  node mobile as "Mobile App"
-}
-registry -[hidden]-> hmis
-registry <-- hmis 
-registry <-- mobile 
-
-@enduml
-```
-
 ```plantuml
 @startuml simple-practitioner-registry-sequence
 skinparam componentStyle uml2
@@ -261,7 +177,6 @@ end
 
 @enduml
 ```
-
 
 ```plantuml
 @startuml simple-practitioner-services
@@ -283,37 +198,6 @@ registry <--> mobile
 @enduml
 ```
 
-
-```plantuml
-@startuml federated-practitioner-registry
-skinparam componentStyle uml2
-skinparam linetype ortho
-
-node registry as "Central Health Worker Registry" {
-  component prac as "mCSD Practitioner"
-  component prole as "mCSD PractitionerRole"
-}
-
-together {
-  node sourcea as "Medical Licensing Board"
-  node sourcec as "Nursing Licensing Board"
-  node sourceb as "Medical University"
-}
-
-node mobile as "Mobile App"
-
-
-registry -[hidden]--> sourcea
-registry -[hidden]-> mobile
-
-registry <--> sourcea 
-registry <--> sourceb 
-registry <--> sourcec 
-
-registry <--> mobile 
-
-@enduml
-```
 ```plantuml
 @startuml federated-practitioner-registry-sequence
 skinparam componentStyle uml2
@@ -349,8 +233,6 @@ end
 @enduml
 ```
 
-
-
 ```plantuml
 @startuml federated-practitioner-services
 skinparam componentStyle uml2
@@ -379,40 +261,6 @@ registry <--> app
 
 @enduml
 ```
-
-```plantuml
-@startuml federated-care-registry
-skinparam componentStyle uml2
-skinparam linetype ortho
-
-node registry as "Care Services Registry" {
-  component forg as "mCSD Organization"
-  component floc as "mCSD Location"
-  component prac as "mCSD Practitioner"
-  component prole as "mCSD PractitionerRole"
-  frame "mCSD Facility"
-  frame "mCSD Jurisdiction"
-}
-
-together {
-  node sourcea as "Facility Registry"
-  node sourceb as "Health Worker Registry"
-}
-
-node mobile as "Mobile App"
-
-registry -[hidden]--> sourcea
-registry -[hidden]-> mobile
-
-registry <--> sourcea 
-registry <--> sourceb 
-
-registry <--> mobile 
-
-@enduml
-```
-
-
 
 ```plantuml
 @startuml federated-care-registry-sequence
@@ -478,6 +326,3 @@ registry <--> mobile
 
 @enduml
 ```
-
-
-
