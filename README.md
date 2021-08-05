@@ -1,4 +1,4 @@
-# mCSD Whitepaper
+# mCSD White Paper
 
 *The organization and content are still a work in progress.*
 
@@ -14,5 +14,5 @@
 
 ** Closed Issues
 
-1. Should we use a standard whitepaper format or use the FHIR IG Publisher?
-***Whitepaper***
+1. Should we use a standard white paper format or use the FHIR IG Publisher?
+***white paper***
