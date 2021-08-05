@@ -18,7 +18,7 @@ This is a white paper of the IHE IT Infrastructure (ITI) domain.
 
 This white paper is published on August 6, 2021 for public comment. Comments can be submitted via traditonal methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
 or by creating a [GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md). Please reference the section that your comment applies to.
-In order to be considered in development of the subsequent verison of the white paper. comments must be received by September 5, 2021. 
+In order to be considered in development of the subsequent verison of the white paper, comments must be received by September 5, 2021. 
 
 General information about IHE can be found at
 [https://www.ihe.net](https://www.ihe.net/).
@@ -32,7 +32,7 @@ Supplements and the process used to create them can be found at
 [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/).
 
 The current version of the IHE IT Infrastructure Technical Framework can be found at
-[https://profiles.ihe.net/ITI/TF/index.html] (https://profiles.ihe.net/ITI/TF/index.html).
+[https://profiles.ihe.net/ITI/TF/index.html](https://profiles.ihe.net/ITI/TF/index.html).
 
 **CONTENTS**
 
