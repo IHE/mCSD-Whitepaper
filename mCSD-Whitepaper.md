@@ -44,13 +44,13 @@ The current version of the IHE IT Infrastructure Technical Framework can be foun
 
 # 1 Introduction
 
-This white paper describes some common uses where the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using [registries or directories](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  
+This white paper describes some common uses where the [Mobile Care Services Discovery (mCSD) Profile](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using [registries or directories](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  
 
-A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can be discoverable using mCSD. mCSD provides extensions of the core FHIR resources to support health information exchange across the enterprise, including the  queries and updates that legacy systems must support to access authoritative registries. For example, an electronic medical records (EMR) system with the ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided.
+A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can be discoverable using mCSD. mCSD provides extensions of the core FHIR&reg; resources to support health information exchange across the enterprise, including the  queries and updates that legacy systems must support to access authoritative registries. For example, an electronic medical records (EMR) system with the ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided.
 
 mCSD also provides extensions that support diverse funding mechanisms and attribution for reporting. mCSD supports complex organizational hierarchies. For example, the mCSD extension for the Organization resource allows for more than one parent Organization resource. This is powerful in that is supports a health facility to be in the hierarchy of several organizations, for example different departments in the same Ministry of Health.
 
-The mCSD implementation guide can be used in various configurations, each suited for a different use-case. The variations will be discussed in the context of these common use-cases. This paper further outlines several use cases that can be adapted to many contexts, including creating facilities and health worker registries.
+The mCSD implementation guide can be used in various configurations, each suited for a different use case. The variations will be discussed in the context of these common use cases. This white paper further outlines several use cases that can be adapted to many contexts, including creating facilities and health worker registries.
 
 ## 1.1 Scope
 
@@ -61,7 +61,7 @@ Infrastructure (ITI) domain of IHE has addressed many of these
 challenges by defining a series of integration profiles to address
 specific aspects of exchanging healthcare information. Each integration
 profile addresses part of the broad set of challenges involved in
-health information exchange. The profiles, however, do not attempt to
+health information exchange. The profiles; however, do not attempt to
 address governance and policy choices that significantly affect how the
 profile is adapted in any particular community. This white paper cannot
 address all such governance and policy issues but will provide some
@@ -76,9 +76,9 @@ themselves. Thus, while each community will generate an architecture
 that meets its individual needs, the use of IHE profiles will lead to
 the creation of standards-based communities.
 
-This white paper will focus on explaining how the mCSD profile can be used
+This white paper will focus on explaining how the mCSD Profile can be used
 to address specific implementation needs.  Since mCSD doesn’t require a
-particular set of FHIR resources to support, there is a need to define
+particular set of FHIR&reg; resources to support, there is a need to define
 various implementations and the additional requirements they would have.
 For example, a Facility Registry would require supporting mCSD with
 Location and Organization resources, and a Health Worker Registry /
@@ -89,13 +89,13 @@ Provider Directory would require Practitioner resources.
 The assumed audience for this white paper includes those involved in a
 current or planned health information community of any size and scope
 that needs an overview of a framework for building a health information
-exchange model based on open standards. This paper does not cover the
+exchange model based on open standards. This white paper does not cover the
 technical details as they are found in the IHE Profiles, White Papers,
 and Webinar material.
 
 Some intended audiences include:
 
-* Govt (MOH, CDC)
+* Government (MOH, CDC)
 * Federal Health Agencies (ONC, HHS, NIST)
 * Regional/State Health Agencies (State Public Health Agencies)
 * NGOs (WHO, UNICEF)
@@ -103,7 +103,7 @@ Some intended audiences include:
 * Standards Development Organizations
 * HIT Non-Profits/Professional Associations (GDHP, HIMSS, RSNA, etc.)
 * Health Systems
-* Executive Offices: CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.
+* Executive Offices (CEO, CIO, CMIO, CNIO, CSO, CTO, CPO, etc.)
 
 ## 1.3 Overview of Mobile Care Services Discovery
 
@@ -166,7 +166,7 @@ The relationship between these entities is illustrated in Figure 1.3-1.
 
 ### 1.3.1 IHE Terminology
 
-IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
+IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR® resources (for FHIR®-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
 ### 1.3.2 Use For Authorization
 
@@ -190,19 +190,19 @@ health outposts, physician offices, etc. In this way of thinking, a
 facility has a unique identifier, geographic attributes (address, geocode),
 contact attributes, attributes regarding its hours of operation, etc.
 
-But, in FHIR there is no single facility resource, rather, **in mCSD, each
+But, in FHIR® there is no single facility resource, rather, **in mCSD, each
 Facility is defined by a pairing of FHIR Location and FHIR Organization**.
 All of the attributes required can be included, but there is no 'Facility'
 FHIR resource.  mCSD uses the `type` element in the Location and Organization
 resources to signify that the resources are being used as a facility or jurisdiction.
 In the [mCSD Supplement](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf),
-see tables 3.90.4.2.2.1-2 and 3.90.4.2.2.2-2 for Facilities and tables
+see Tables 3.90.4.2.2.1-2 and 3.90.4.2.2.2-2 for Facilities and Tables
 3.90.4.2.2.1-3 and 3.90.4.2.2.2-3 for Jurisdictions.
 
 > **A facility is defined as a FHIR Location + FHIR Organization pair**
 >
 > The key takeaway is that when thinking of a health facility, there is no
-> single FHIR resource, instead it is represented in FHIR as a Location and
+> single FHIR resource, instead it is represented in FHIR® as a Location and
 > Organization resource pair linked by the `Location.managingOrganization` element.
 > Jurisdictions are handled the same way.
 
@@ -238,11 +238,11 @@ Organizations of a parent Organization.
 >
 > Organizations are powerful representations, they can have more than one
 > hierarchy in mCSD, but Locations can only have one hierarchy. (This requires
-> a mCSD extension to the core FHIR spec for Organizations.)
+> an mCSD extension to the core FHIR® spec for Organizations.)
 
 #### 1.3.3.1 Hierarchies
 
-Multiple hierarchies are handled with a FHIR extension on the Organization
+Multiple hierarchies are handled with a FHIR® extension on the Organization
 resource in mCSD.  Each Organization can be part of any number of parent
 Organizations associated with a type for the hierarchy.  A hierarchy can
 be within Facilities, Jurisdictions and/or Organizations.  This extension is
@@ -312,7 +312,7 @@ requiring access to the various data sources.
 
 A Health Worker Registry could be operationalized by collecting and
 collating underlying provider demographic content from multiple clinical
-colleges (e.g. College of Physicians and Surgeons, College of Nurses,
+colleges (e.g., College of Physicians and Surgeons, College of Nurses,
 College of Pharmacists, etc.). These Colleges exert governance over their
 membership, which may include a requirement of licensure in the
 self-governing body in order to legally practice in a jurisdiction. As
@@ -324,9 +324,9 @@ WHICH workers (Practitioner) provide WHAT SERVICES (HealthcareService), WHERE (L
 
 > **Unlicensed Practitioner Roles and the Community and Volunteer Health Workforce**
 >
-> In FHIR, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a jurisdiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR R4 Practitioner specification are receptionists and IT personnel.
+> In FHIR®, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a jurisdiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR® R4 Practitioner specification are receptionists and IT personnel.
 >
-> The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
+> The mCSD Profile adopts the FHIR® Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
 ### 2.3.1 Implementation
 
@@ -339,7 +339,7 @@ this data with the licensing and training data.
 
 ## 2.4 Functioning Facilities Registry
 
-Monitor functioning facilities, e.g. when buildings are operational,
+Monitor functioning facilities, e.g., when buildings are operational,
 construction teams, infrastructure, maintenance, then share that
 information with the public. There is a need to immediately view services,
 openings, closures.
@@ -414,7 +414,7 @@ include healthcare service content.
 The following actors, transactions, and resources are be used.
 
 * Actors (Options)
-  * Care Services Selective Supplier (Location Distance option)
+  * Care Services Selective Supplier (Location Distance Option)
 * Transactions
   * Find Matching Care Services \[ITI-90\]
 * Resources
@@ -423,7 +423,7 @@ The following actors, transactions, and resources are be used.
   * `HealthcareService` ***Optional***
 
 Clients will act as a Care Services Selective Consumer (Location Distance
-option) to search the Facility Registry content.  Figure 3.2.1-1 shows a
+Option) to search the Facility Registry content.  Figure 3.2.1-1 shows a
 Health Management Information System (HMIS) and a Mobile App querying the
 Facility Registry using Find Matching Care Services \[ITI-90\].
 
@@ -449,9 +449,9 @@ healthcare service content.
 The following actors, transactions, and resources are be used.
 
 * Actors (Options)
-  * Care Services Selective Supplier (Location Distance option)
-  * Care Services Update Supplier (Location Distance option)
-  * Care Services Update Consumer (Location Distance option)
+  * Care Services Selective Supplier (Location Distance Option)
+  * Care Services Update Supplier (Location Distance Option)
+  * Care Services Update Consumer (Location Distance Option)
 * Transactions
   * Find Matching Care Services \[ITI-90\]
   * Request Care Services Updates \[ITI-91\]
@@ -461,7 +461,7 @@ The following actors, transactions, and resources are be used.
   * `HealthcareService` ***Optional***
 
 Other sources will act as a Care Services Selective Suppliers (Location
-Distance option) to update the Facility Registry content.  Figure 3.2.3-1
+Distance Option) to update the Facility Registry content.  Figure 3.2.3-1
 shows a federated system of servers sending their content to a
 Federated Facility Registry using Request Care Services Updates \[ITI-91\] and a mobile app querying
 facility data using Find Matching Care Services \[ITI-90\].  Each server can also pull the full
@@ -580,9 +580,9 @@ may also include healthcare service content.
 The following actors, transactions, and resources are be used.
 
 * Actors (Options)
-  * Care Services Selective Supplier (Location Distance option)
-  * Care Services Update Supplier (Location Distance option)
-  * Care Services Update Consumer (Location Distance option)
+  * Care Services Selective Supplier (Location Distance Option)
+  * Care Services Update Supplier (Location Distance Option)
+  * Care Services Update Consumer (Location Distance Option)
 * Transactions
   * Find Matching Care Services \[ITI-90\]
   * Request Care Services Updates \[ITI-91\]
