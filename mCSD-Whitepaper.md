@@ -44,7 +44,7 @@ Supplements and the process used to create them can be found at
 
 # 1 Introduction
 
-This whitepaper describes some common uses where the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using [registries or directories](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  
+This white paper describes some common uses where the [Mobile Care Services Discovery (mCSD profile)](https://www.ihe.net/uploadedFiles/Documents/ITI/IHE_ITI_Suppl_mCSD.pdf) can be used to help implementation of services discovery using [registries or directories](https://profiles.ihe.net/ITI/HIE-Whitepaper/index.html#6-common-provider-directory).  In general, registry services are designed to uniquely identify and track unique patients, facilities, healthcare products and terminology that are used throughout the health information exchange.  
 
 A core need in health information exchange is to have common, authoritative registries of locations, organizations, jurisdictions, practitioners, and the roles and services they offer. These services can be discoverable using mCSD. mCSD provides extensions of the core FHIR resources to support health information exchange across the enterprise, including the  queries and updates that legacy systems must support to access authoritative registries. For example, an electronic medical records (EMR) system with the ability to perform care services discovery can help patients get the care they need, from a licensed practitioner, in a location where it is provided.
 
@@ -176,7 +176,7 @@ have access to.  When a practitioner needs access, the access control system may
 use the registry relationships, such as to organizations or roles, to see if they
 can be given access.
 
-The [Access Control Whitepaper](https://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf) describes these scenarios.
+The [Access Control White Paper](https://www.ihe.net/Technical_Framework/upload/IHE_ITI_TF_WhitePaper_AccessControl_2009-09-28.pdf) describes these scenarios.
 mCSD can also be used for attribute retrieval as described in Section 9.5.  Section
 5.7.2 discusses how PIX/PDQ can be used to retrieve patient attributes for
 cross-enterprise access control and mCSD can be used to do the same for practitioner
