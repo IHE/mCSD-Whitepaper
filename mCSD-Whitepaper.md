@@ -4,24 +4,21 @@
 
 **mCSD White Paper**
 
-**Revision 0.1 - Draft**
+**Revision 1.0 - Draft for Public Comment**
 
-Date: April 13, 2021
+Date: August 6, 2021
 
 Author: ITI Technical Committee
 
 Email: [iti@ihe.net](mailto:iti@ihe.net)
 
-# Forward
+# Foreword
 
 This is a white paper of the IHE IT Infrastructure (ITI) domain.
 
-This white paper is published on XXXX XX, 2021. Comments are invited at
-any time and can be submitted using the
-[ITI Public Comment form](http://www.ihe.net/ITI_Public_Comments/)
-or by creating a
-[GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md).
-Please reference the section that your comment applies to.
+This white paper is published on August 6, 2021 for public comment. Comments can be submitted via traditonal methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
+or by creating a [GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md). Please reference the section that your comment applies to.
+In order to be considered in development of the subsequent verison of the white paper. comments must be received by September 5, 2021. 
 
 General information about IHE can be found at
 [https://www.ihe.net](https://www.ihe.net/).
@@ -33,6 +30,9 @@ Information about the organization of IHE Technical Frameworks and
 Supplements and the process used to create them can be found at
 [https://www.ihe.net/about_ihe/ihe_process](https://www.ihe.net/about_ihe/ihe_process/) and
 [https://www.ihe.net/resources/profiles](https://www.ihe.net/resources/profiles/).
+
+The current version of the IHE IT Infrastructure Technical Framework can be found at
+[https://profiles.ihe.net/ITI/TF/index.html] (https://profiles.ihe.net/ITI/TF/index.html).
 
 **CONTENTS**
 
@@ -166,7 +166,7 @@ The relationship between these entities is illustrated in Figure 1.3-1.
 
 ### 1.3.1 IHE Terminology
 
-The IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
+IHE Profiles, including mCSD, use a specific [terminology](https://profiles.ihe.net/GeneralIntro/ch-3.html) to express use cases: `Actors`, `Transactions`, `Resources`, and `Options`. This terminology creates a set of interoperability constraints. `Actors` are the information systems or components of information systems in the workflow. `Transactions` are the exchanges between `Actors`. `Resources` mean FHIR resources (for FHIR-centered Profiles). `Options` in mCSD may exist for `Actors` which are additional `Transactions` that may or may not be chosen for the use case.
 
 ### 1.3.2 Use For Authorization
 
