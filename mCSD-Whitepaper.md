@@ -16,9 +16,9 @@ Email: [iti@ihe.net](mailto:iti@ihe.net)
 
 This is a white paper of the IHE IT Infrastructure (ITI) domain.
 
-This white paper is published on August 6, 2021 for public comment. Comments can be submitted via traditonal methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
+This white paper is published on August 6, 2021 for public comment. Comments can be submitted via traditional methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
 or by creating a [GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md). Please reference the section that your comment applies to.
-In order to be considered in development of the subsequent verison of the white paper, comments must be received by September 5, 2021. 
+In order to be considered in development of the subsequent version of the white paper, comments must be received by September 5, 2021. 
 
 General information about IHE can be found at
 [https://www.ihe.net](https://www.ihe.net/).
@@ -326,7 +326,7 @@ WHICH workers (Practitioner) provide WHAT SERVICES (HealthcareService), WHERE (L
 >
 > In FHIR®, a [Practitioner](https://www.hl7.org/fhir/practitioner.html#8.4) is a "person who is directly or indirectly involved in the provisioning of healthcare". This means that some Practitioners may be in roles that require qualifications and licensure to perform in a jurisdiction, while other Practitioners providing care may not, and still others may engage in support functions. One example may be a nurse's aide who may not require licensure or formal qualification but are providing care. Another example is that in Low- and Middle-Income Countries (LMIC) the formal health workforce is often supplemented by volunteers as in vaccination campaigns and Community-based Health Workers (CHWs) to support maternal and child health. Some [examples](https://www.hl7.org/fhir/practitioner.html#scope) of support functions from the FHIR® R4 Practitioner specification are receptionists and IT personnel.
 >
-> The mCSD Profile adopts the FHIR® Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
+> The mCSD Profile adopts the FHIR Practitioner approach in that all direct and indirect roles in healthcare may be captured in Practitioner and PractitionerRoles. Implementers of mCSD may choose to pursue their own formal definitions of the health workforce and define them, for example in ValueSets, in their Implementation Guides.
 
 ### 2.3.1 Implementation
 
