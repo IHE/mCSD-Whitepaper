@@ -1,0 +1,1 @@
+pandoc -r gfm --template=https://github.com/IHE/publications/raw/master/ihe_template.html --metadata title="mCSD_White_Paper" --metadata path-prefix="../../../" -w html -o index.html mCSD-Whitepaper.md
