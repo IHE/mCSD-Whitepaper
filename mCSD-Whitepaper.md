@@ -4,9 +4,9 @@
 
 **mCSD White Paper**
 
-**Revision 1.0 - Draft for Public Comment**
+**Revision 1.1 - Published**
 
-Date: August 6, 2021
+Date: November 2, 2021
 
 Author: ITI Technical Committee
 
@@ -16,9 +16,8 @@ Email: [iti@ihe.net](mailto:iti@ihe.net)
 
 This is a white paper of the IHE IT Infrastructure (ITI) domain.
 
-This white paper is published on August 6, 2021 for public comment. Comments can be submitted via traditional methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
-or by creating a [GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md). Please reference the section that your comment applies to.
-In order to be considered in development of the subsequent version of the white paper, comments must be received by September 5, 2021. 
+This white paper is published on November 2, 2021. Comments can be submitted via traditional methods at [ITI Public Comments](http://www.ihe.net/ITI_Public_Comments/)
+or by creating a [GitHub Issue](https://github.com/IHE/mCSD-Whitepaper/issues/new?template=public-comment-issue-template.md). Please reference the section that your comment applies to. 
 
 General information about IHE can be found at
 [https://www.ihe.net](https://www.ihe.net/).
